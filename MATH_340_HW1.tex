@@ -185,12 +185,42 @@ i) $\lambda \vec{v} = \lambda \vec{w} \Rightarrow \vec{v} = \vec{w}$ whenever $\
 
 ii) $\alpha \vec{v} = \beta \vec{v} \Rightarrow \alpha = \beta$ whenever $\vec{v} \neq 0$
 
-iii) $\lambda \cdot \vec{v} = 0 \Leftrightarrow \lambda=0$ or $\vec{v} =0 $
+iii) $\lambda \cdot \vec{v} = \vec{0} \Leftrightarrow \lambda=0$ or $\vec{v} =0 $
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $ \newline
+i) Since $\lambda \ne 0$ is an element of the field $\mathcal{F}$, there exist a multiplicative inverse $\lambda^{-1}$ such that $\lambda \cdot \lambda^{-1} =1$. Then given that $\lambda \vec{v} = \lambda \vec{w}$
+$$ \vec{v} = 1 \cdot \vec{v} = \lambda^{-1} \cdot \lambda \cdot \vec{v} = \lambda^{-1} \cdot \lambda \cdot \vec{w} = 1 \cdot \vec{w} = \vec{w}$$
+\smallskip
+
+ii) Prove by contradiction. 
+
+Assume that $\vec{v} \ne 0$, $\alpha \vec{v} = \beta \vec{v}$ and $\alpha \ne \beta$. Define $\lambda = \alpha - \beta$ then $\lambda \ne 0$, so there exist an inverse $\lambda^{-1}$. Moreover, $\alpha \vec{v} = \beta \vec{v}$ implies that $(\alpha - \beta) \vec{v} = \lambda \vec{v} =\vec{0}$. Since $a \cdot \vec{0} = \vec{0}$ for all $a \in \mathcal{F}$
+\begin{align*}
+\vec{0} &= \lambda^{-1} \cdot \vec{0} \\
+&= \lambda^{-1} \cdot (\lambda \vec{v})\\
+&= 1 \cdot \vec{v}\\
+&= \vec{v}
+\end{align*}
+contradicts that $\vec{v} \ne \vec{0}$. Hence $\alpha = \beta$.
+\smallskip
+
+iii) Want to show that $\lambda \cdot \vec{v} = \vec{0}$ implies $\lambda = 0$ or $\vec{v} = \vec{0}$. Prove by 
+contradiction, that is, $\lambda \cdot \vec{v} = \vec{0}$, $\lambda \ne 0$ and $\vec{v} \ne \vec{0}$.
+
+Since $\lambda \ne 0$ there exists an inverse $\lambda^{-1}$ such that $\lambda \cdot \lambda^{-1} = 1$. And by the theorem proved in class
+\begin{align*}
+\vec{0} &= \lambda^{-1} \cdot \vec{0}\\
+&= \lambda^{-1} \cdot (\lambda \cdot \vec{v})\\
+&= 1 \cdot \vec{v}\\
+&= \vec{v}
+\end{align*}
+contradicts that $\vec{v} \ne \vec{0}$. Hence  $\lambda \cdot \vec{v} = \vec{0} \Rightarrow \lambda = 0$ or $\vec{v} = \vec{0}$.
+
+The converse is trivial by the theorem proved in class that $\lambda \cdot \vec{0} = \vec{0}$ for all $\lambda \in \mathcal{F}$ and $0 \cdot \vec{v} = \vec{0}$ for all $\vec{v} \in \mathcal{V}$. 
+
 \end{proof}
 
 
