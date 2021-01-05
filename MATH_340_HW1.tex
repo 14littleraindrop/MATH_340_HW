@@ -1,0 +1,239 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{WINTER 2021 --- MATH 340 HW1}
+\rhead{Helen (Yeu) Chen}
+\setlength{\parindent}{0cm}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+
+\begin{document}
+
+
+$ \bullet$ \textbf{Problem 1}
+\medskip
+
+\begin{itshape}
+Show that the set $\mathcal{V}$ of all real valued $n \times m$ matrices with the usual matrix addition and scalar multiplication is a vector space over $\mathbb{R}$ for any $n \ge 1$, $m \ge1$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Let $A$, $B$ and $C$ be $n \times m$ matrices with $n,m \ge 1$, that is 
+$$A = \begin{pmatrix} a_{11} & a_{12} & \ldots & a_{1m} \\ a_{21} & a_{22} & \ldots  & a_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \ldots & a_{nm} \end{pmatrix}, B = \begin{pmatrix} b_{11} & b_{12} & \ldots & b_{1m} \\ b_{21} & b_{22} & \ldots  & b_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ b_{n1} & b_{n2} & \ldots & b_{nm} \end{pmatrix}, C= \begin{pmatrix} c_{11} & c_{12} & \ldots & c_{1m} \\ c_{21} & c_{22} & \ldots  & c_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ c_{n1} & c_{n2} & \ldots & c_{nm} \end{pmatrix}$$
+
+Let $a, b \in \mathbb{R}$.
+\smallskip
+
+\textbf{1. $+$ is commutative:}
+\begin{align*}
+A + B &= \begin{pmatrix} a_{11} & a_{12} & \ldots & a_{1m} \\ a_{21} & a_{22} & \ldots  & a_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \ldots & a_{nm} \end{pmatrix} +  \begin{pmatrix} b_{11} & b_{12} & \ldots & b_{1m} \\ b_{21} & b_{22} & \ldots  & b_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ b_{n1} & b_{n2} & \ldots & b_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} a_{11} + b_{11} & a_{12} + b_{12} & \ldots & a_{1m} + b_{1m} \\ a_{21} + b_{21} & a_{22} + b_{22} & \ldots  & a_{2m} + b_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} + b_{n1} & a_{n2} +  b_{n2} & \ldots & a_{nm} + b_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} b_{11} + a_{11} & b_{12} + a_{12} & \ldots & b_{1m} + a_{1m} \\ b_{21} + a_{21} & b_{22} + a_{22} & \ldots  & b_{2m} + a_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ b_{n1} + a_{n1} & b_{n2} + a_{n2} & \ldots & b_{nm} + a_{nm} \end{pmatrix} \text{(by commutative of addition of reals)} \\
+&=  \begin{pmatrix} b_{11} & b_{12} & \ldots & b_{1m} \\ b_{21} & b_{22} & \ldots  & b_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ b_{n1} & b_{n2} & \ldots & b_{nm} \end{pmatrix} + \begin{pmatrix} a_{11} & a_{12} & \ldots & a_{1m} \\ a_{21} & a_{22} & \ldots  & a_{2m} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \ldots & a_{nm} \end{pmatrix} \\
+&= B+ A
+\end{align*}
+Hence addition is commutative in the vector space.
+\smallskip
+
+\textbf{2. $+$ is associative:}
+\begin{align*}
+(A + B) + C &= (\begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} +  \begin{pmatrix} b_{11} &  \ldots & b_{1m} \\  \vdots & \ddots & \vdots \\ b_{n1} &  \ldots & b_{nm} \end{pmatrix}) + \begin{pmatrix} c_{11} &  \ldots & c_{1m} \\ \vdots & \ddots & \vdots \\ c_{n1} & \ldots & c_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} a_{11} + b_{11} & \ldots & a_{1m} + b_{1m} \\ \vdots & \ddots & \vdots \\ a_{n1} + b_{n1} & \ldots & a_{nm} + b_{nm} \end{pmatrix} + \begin{pmatrix} c_{11} &  \ldots & c_{1m}  \\ \vdots & \ddots & \vdots \\ c_{n1} & \ldots & c_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} (a_{11} + b_{11}) + c_{11} & \ldots & (a_{1m} + b_{1m}) + c_{1m} \\  \vdots & \ddots & \vdots \\ (a_{n1} + b_{n1}) + c_{n1} & \ldots & (a_{nm} + b_{nm}) + c_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} a_{11} + (b_{11} + c_{11}) & \ldots & a_{1m} + (b_{1m} + c_{1m}) \\  \vdots & \ddots & \vdots \\ a_{n1} + (b_{n1} + c_{n1}) & \ldots & a_{nm} + (b_{nm} + c_{nm}) \end{pmatrix} \text{(by associativity of addition of reals)} \\
+&= \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} + \begin{pmatrix} b_{11} + c_{11} &  \ldots & b_{1m} + c_{1m} \\  \vdots & \ddots & \vdots \\ b_{n1} +c_{n1} &  \ldots & b_{nm} + c_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} +  (\begin{pmatrix} b_{11} &  \ldots & b_{1m} \\  \vdots & \ddots & \vdots \\ b_{n1} &  \ldots & b_{nm} \end{pmatrix} + \begin{pmatrix} c_{11} &  \ldots & c_{1m} \\ \vdots & \ddots & \vdots \\ c_{n1} & \ldots & c_{nm} \end{pmatrix}) \\
+&= A + (B+ C)
+\end{align*}
+Hence addition is associative in the vector space.
+\smallskip
+
+\textbf{3. identity for $+$:}
+
+Let $\vec{0}$ be a $n \times m$ matrix with all zero entries. Then
+\begin{align*}
+A + \vec{0} &= \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} + \begin{pmatrix} 0 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & 0 \end{pmatrix} \\
+&=  \begin{pmatrix} a_{11} + 0 & \ldots & a_{1m} +0  \\ \vdots &  \ddots & \vdots \\ a_{n1} +0 &  \ldots & a_{nm} +0 \end{pmatrix} \\
+&= \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} \text{(given that $0$ is the identity for addition for reals)} \\
+&= A
+\end{align*}
+Hence the zero matrix (which is also element of $\mathcal{V}$) is the identity for addition for this vector field.
+\smallskip
+
+\textbf{4. additive inverse:}
+
+Take $$-A = \begin{pmatrix} -a_{11} & \ldots & -a_{1m} \\ \vdots &  \ddots & \vdots \\ -a_{n1} &  \ldots & -a_{nm} \end{pmatrix} $$
+Then 
+\begin{align*}
+A + (-A) &= \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} + \begin{pmatrix} -a_{11} & \ldots & -a_{1m} \\ \vdots &  \ddots & \vdots \\ -a_{n1} &  \ldots & -a_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} a_{11}+(-a_{11}) & \ldots & a_{1m}+ (-a_{1m}) \\ \vdots &  \ddots & \vdots \\ a_{n1}+(-a_{n1}) &  \ldots & a_{nm}+(-a_{nm}) \end{pmatrix} \\
+&= \begin{pmatrix} 0 & \ldots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \ldots & 0 \end{pmatrix} \\
+&= \vec{0}
+\end{align*}
+Hence for all $A \in \mathcal{V}$, $-A$ defined as above is its additive inverse.
+\smallskip
+
+\textbf{5. multiplicative identity:}
+
+Take the multiplicative identity to be $1 \in \mathbb{R}$. Then
+\begin{align*}
+1 \cdot  A &= 1 \cdot \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} 1 \cdot a_{11} & \ldots & 1 \cdot a_{1m} \\ \vdots &  \ddots & \vdots \\ 1 \cdot a_{n1} &  \ldots & 1 \cdot a_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix}\\
+&= A
+\end{align*}
+Hence $1$ is the multiplicative inverse.
+\smallskip
+
+\textbf{6. $(a \cdot b) A = a \cdot (b \cdot A)$:}
+\begin{align*}
+(a \cdot b) A &= ab \cdot \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} (ab) \cdot a_{11} & \ldots & (ab) \cdot a_{1m} \\ \vdots &  \ddots & \vdots \\ (ab) \cdot a_{n1} &  \ldots & (ab) \cdot a_{nm} \end{pmatrix} \\ 
+&=  \begin{pmatrix} a(b \cdot a_{11}) & \ldots & a(b \cdot a_{1m}) \\ \vdots &  \ddots & \vdots \\ a(b \cdot a_{n1}) &  \ldots & a(b \cdot a_{nm}) \end{pmatrix} \text{(by associativity of multiplication of reals)}\\
+&=  a \cdot \begin{pmatrix} b \cdot a_{11} & \ldots & b \cdot a_{1m} \\ \vdots &  \ddots & \vdots \\ b \cdot a_{n1} &  \ldots & b \cdot a_{nm} \end{pmatrix} \\
+&= a \cdot (b \cdot \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix}) \\
+&= a \cdot (b \cdot A)
+\end{align*}
+\smallskip
+
+\textbf{7. $a(A+B)=aA+aB$:}
+\begin{align*}
+a(A+B) &= a(\begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} + \begin{pmatrix} b_{11} &  \ldots & b_{1m} \\  \vdots & \ddots & \vdots \\ b_{n1} &  \ldots & b_{nm} \end{pmatrix}) \\
+&= a\begin{pmatrix} a_{11} + b_{11} & \ldots & a_{1m} + b_{1m} \\ \vdots & \ddots & \vdots \\ a_{n1} + b_{n1} & \ldots & a_{nm} + b_{nm} \end{pmatrix}\\
+&= \begin{pmatrix} a(a_{11} + b_{11}) & \ldots & a(a_{1m} + b_{1m}) \\ \vdots & \ddots & \vdots \\ a(a_{n1} + b_{n1}) & \ldots & a(a_{nm} + b_{nm}) \end{pmatrix}\\
+&= \begin{pmatrix} aa_{11} + ab_{11} & \ldots & aa_{1m} + ab_{1m} \\ \vdots & \ddots & \vdots \\ aa_{n1} + ab_{n1} & \ldots & aa_{nm} + ab_{nm} \end{pmatrix} \text{(since multiplication distributes over addition in reals)} \\
+&= \begin{pmatrix} aa_{11} & \ldots & aa_{1m} \\ \vdots &  \ddots & \vdots \\ aa_{n1} &  \ldots & aa_{nm} \end{pmatrix} + \begin{pmatrix} ab_{11} &  \ldots & ab_{1m} \\  \vdots & \ddots & \vdots \\ ab_{n1} &  \ldots & ab_{nm} \end{pmatrix} \\
+&= aA+ aB
+\end{align*}
+\smallskip
+
+\textbf{8. $(a+b)A = aA+bA$:}
+\begin{align*}
+(a+b)A &= (a+b)\cdot \begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix}\\
+&= \begin{pmatrix} (a+b)a_{11} & \ldots & (a+b)a_{1m} \\ \vdots &  \ddots & \vdots \\ (a+b)a_{n1} &  \ldots & (a+b)a_{nm} \end{pmatrix} \\
+&= \begin{pmatrix} aa_{11}+ba_{11} & \ldots & aa_{1m}+ba_{1m} \\ \vdots &  \ddots & \vdots \\ aa_{n1}+ba_{n1} &  \ldots & aa_{nm}+ba_{nm} \end{pmatrix} \text{(since multiplication distributes over addition in reals)} \\
+&= \begin{pmatrix} aa_{11} & \ldots & aa_{1m} \\ \vdots &  \ddots & \vdots \\ aa_{n1} &  \ldots & aa_{nm} \end{pmatrix} + \begin{pmatrix} ba_{11} & \ldots & ba_{1m} \\ \vdots &  \ddots & \vdots \\ ba_{n1} &  \ldots & ba_{nm} \end{pmatrix} \\
+&= a\begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix} + b\begin{pmatrix} a_{11} & \ldots & a_{1m} \\ \vdots &  \ddots & \vdots \\ a_{n1} &  \ldots & a_{nm} \end{pmatrix}\\
+&= aA +bA
+\end{align*}
+\smallskip
+
+By verifying these 8 properties, we showed that $\mathcal{V}$ in indeed a vector space. 
+
+
+\end{proof}
+
+
+\newpage
+$\bullet$ \textbf{Problem 2} 
+\medskip
+
+\begin{itshape}
+Define a new matrix addition for square matrices. $A+B=C$ is defined as follows:
+
+if $A=(a_{ij})$, $B=(b_{ij})$, $C=(c_{ij})$, then $c_{ij}=a_{ij}+b_{ji}$.
+
+For example 
+$ \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} + \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix} = \begin{pmatrix} 1+5 & 2+7 \\ 3+6 & 4+8 \end{pmatrix}$.
+
+Is the set of $n \times m$ real matrices with this new addition and usual scaler multiplication a vector space?
+\end{itshape}
+\medskip
+
+\begin{proof} Claim: This is not a vector space
+$ $ \newline
+We will show that it does not satisfy $(a+b)A = aA+bA$.
+
+Take $a=b=1$ and $A= \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$. Then
+\begin{align*}
+(a+b)A &= (1+1)\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\\
+&= 2 \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+&=\begin{pmatrix} 2\cdot 1 & 2\cdot 2 \\2\cdot  3 & 2\cdot 4 \end{pmatrix}\\
+&= \begin{pmatrix} 2 & 4 \\ 6 & 8 \end{pmatrix}
+\end{align*}
+
+However,
+\begin{align*}
+aA+bA &= 1\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} + 1\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+&= \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} +\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \\
+&= \begin{pmatrix} 1+1 & 2+3 \\ 3+2 & 4+4 \end{pmatrix} \\
+&= \begin{pmatrix} 2 & 5 \\ 5 & 8 \end{pmatrix}
+\end{align*}
+Hence $(a+b)A \ne aA+bA$, and so with this new addition rule $\mathcal{V}$ is no longer a vector space.
+
+\end{proof}
+
+
+\newpage
+$\bullet$ \textbf{Problem 3}
+\medskip
+
+\begin{itshape}
+In this problem $\mathcal{V}$ is a vector space over $\mathcal{F}$. $\vec{v}. \vec{w} \in \mathcal{V}$, $\lambda \in \mathcal{F}$. Prove that
+
+i) $\lambda \vec{v} = \lambda \vec{w} \Rightarrow \vec{v} = \vec{w}$ whenever $\lambda \neq 0$
+
+ii) $\alpha \vec{v} = \beta \vec{v} \Rightarrow \alpha = \beta$ whenever $\vec{v} \neq 0$
+
+iii) $\lambda \cdot \vec{v} = 0 \Leftrightarrow \lambda=0$ or $\vec{v} =0 $
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $ \newline
+\end{proof}
+
+
+\newpage
+$\bullet$ \textbf{Problem 4}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{S}$ be the set of all real valued differentiable functions $f:(0,1) \to \mathbb{R}$. Prove that $\mathcal{S}$ is a subspace of $\mathbb{R}^{(0,1)}$
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $ \newline
+\end{proof}
+
+
+\newpage
+$\bullet$ \textbf{Problem 5}
+\medskip
+
+\begin{itshape}
+Given an example of a subset $\mathcal{S}$ of $\mathbb{R}^2$ that contains $(0,0)$, is closed under vector addition but it is not a subspace of $\mathbb{R}^2$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $ \newline
+\end{proof}
+
+
+\newpage
+$\bullet$ \textbf{Problem 6}
+\medskip
+
+\begin{itshape}
+Assume $\mathcal{V}$ is a vector space and $S_{x}$, $x \in \mathcal{F}$ is a family of subspaces of $\mathcal{V}$. Prove that $\bigcap \limits_{x \in \mathcal{F}} \mathcal{S}_{x}$ is a subspace of $\mathcal{V}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $ \newline
+\end{proof}
+
+
+\end{document}
