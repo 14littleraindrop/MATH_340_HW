@@ -14,6 +14,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
+\fancyfoot[C]{\thepage}
 
 \begin{document}
 
@@ -235,6 +236,22 @@ Let $\mathcal{S}$ be the set of all real valued differentiable functions $f:(0,1
 
 \begin{proof}
 $ $ \newline
+\textbf{1) $\vec{0} \in \mathcal{S}$:}
+
+The zero vector of the vector space $\mathbb{R}^{(0,1)}$ is the constant zero function, which is clearly differentiable. Hence, $\vec{0} \in \mathcal{S}$.
+\smallskip
+
+\textbf{2) closed under addition:}
+
+Let $f, g \in \mathcal{S}$, so $f$ and $g$ are differentiable. From calculus we know the sum of two differentiable functions is differentiable, and clearly the domain of $(f+g)(x)$ is still $(0,1)$. Hence, $(f+g)(x): (0,1) \to \mathbb{R} \in \mathcal{S}$. 
+\smallskip
+
+\textbf{3) closed under scalar multiplication:}
+
+Let $f \in \mathcal{S}$, then $f$ is differentiable. Again, from calculus, multiplying a differentiable function by a constant will not change the differentiability of the function, and the domain does not change under this process too. So, $\lambda f: (0,1) \to \mathbb{R} \in \mathcal{S}$.
+\smallskip
+
+This shows that $\mathcal{S} \le \mathbb{R}^{(0,1)}$. 
 \end{proof}
 
 
