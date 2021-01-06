@@ -249,6 +249,11 @@ Given an example of a subset $\mathcal{S}$ of $\mathbb{R}^2$ that contains $(0,0
 
 \begin{proof}
 $ $ \newline
+Let $\mathcal{S} = \{ (x,y) | x \ge 0, y=0 \}$ (the positive $x$ axis). Then $(0,0) \in \mathcal{S}$. If $\vec{u}, \vec{v} \in \mathcal{S}$, then $\vec{u} = (x_{u},0)$ and $\vec{v} = (x_{v},0)$ with $x_{u}, x_{v} \ge 0$. 
+
+$\vec{u} + \vec{v} = (x_{u}, 0) + (x_{v}, 0) = (x_{u} + x_{v} ,0)$ where $x_{u} + x_{v} \ge 0$. Hence $\vec{u} + \vec{v} \in \mathcal{S}$. That is, $\mathcal{S}$ is closed under vector addition.
+
+However, $\mathcal{S}$ is not a subspace because if taking $\lambda = -1$ and $(1, 0) \in \mathcal{S}$, then $\lambda \cdot (1,0) = -1 \cdot (1,0) = (-1,0) \notin \mathcal{S}$. Thats is, $\mathcal{S}$ is not closed under scalar multiplication, hence not a subspace of $\mathbb{R}^2$.
 \end{proof}
 
 
