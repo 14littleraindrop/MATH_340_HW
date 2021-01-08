@@ -170,7 +170,7 @@ aA+bA &= 1\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} + 1\begin{pmatrix} 1 & 2 
 &= \begin{pmatrix} 1+1 & 2+3 \\ 3+2 & 4+4 \end{pmatrix} \\
 &= \begin{pmatrix} 2 & 5 \\ 5 & 8 \end{pmatrix}
 \end{align*}
-Hence $(a+b)A \ne aA+bA$, and so with this new addition rule $\mathcal{V}$ is no longer a vector space.
+Hence $(a+b)A \ne aA+bA$, and so with this new addition rule, $\mathcal{V}$ is no longer a vector space.
 
 \end{proof}
 
@@ -308,12 +308,15 @@ $\bullet$ \textbf{Problem 7}
 \medskip
 
 \begin{itshape}
-Assume $\mathcal{V}$ is a vector space and $v_{1}$, $v_{2}$, $w$ are subspaces of $\mathcal{V}$, such that $v_{1} \oplus w = v_{2} \oplus w$. Does it necessarily follow that $v_{1}=v_{2}$? Justify
+Assume $\mathcal{V}$ is a vector space and $\mathcal{U}_{1}$, $\mathcal{U}_{2}$, $\mathcal{W}$ are subspaces of $\mathcal{V}$, such that $\mathcal{U}_{1} \oplus \mathcal{W} = \mathcal{U}_{2} \oplus \mathcal{W}$. Does it necessarily follow that $\mathcal{U}_{1}=\mathcal{U}_{2}$? Justify
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $ \newline
+False. Let $\mathcal{V} = \mathbb{R}^2$ and $\mathcal{W} = \mathbb{R}^2, \mathcal{U}_1 = \{ (x, 0 ) | x \in \mathbb{R} \}, \mathcal{U}_2 = \{ (0,0) \}$. Note that $\mathcal{W}$, $\mathcal{U}_1$, and $\mathcal{U}_2$ are indeed subspaces of $\mathcal{V}$. Also notice that $\mathcal{U}_1 \oplus \mathcal{W} = \{ (x,0) | x \in \mathbb{R} \} \oplus \mathbb{R}^2 = \mathbb{R}^2$ and $\mathcal{U}_2 \oplus \mathcal{W} = \{ (0,0) \} \oplus \mathbb{R}^2 = \mathbb{R}^2$.
+
+Hence $\mathcal{U}_{1} \oplus \mathcal{W} = \mathcal{U}_{2} \oplus \mathcal{W}$ but $\mathcal{U}_1 \ne \mathcal{U}_2$, so the statement is false.
 \end{proof}
 
 
@@ -322,16 +325,37 @@ $\bullet$ \textbf{Problem 8}
 \medskip
 
 \begin{itshape}
-Let $U_{1} = \{ (x,y,0,0) | x, y \in \mathbb{R} \}$ and $U_{2} = \{ (x,0,z,t) | x, y, t \in \mathbb{R} \}$. $U_{1}$ and $U_{2}$ are subspaces of $\mathbb{R}^4$ (you do not need to prove this).
+Let $\mathcal{U}_{1} = \{ (x,y,0,0) | x, y \in \mathbb{R} \}$ and $\mathcal{U}_{2} = \{ (x,0,z,t) | x, z, t \in \mathbb{R} \}$. $\mathcal{U}_{1}$ and $\mathcal{U}_{2}$ are subspaces of $\mathbb{R}^4$ (you do not need to prove this).
 
-Prove that $U_{1} + U_{2}$ is not a direct sum.
+Prove that $\mathcal{U}_{1} + \mathcal{U}_{2}$ is not a direct sum.
 
-Find $U_{3} \le \mathbb{R}^4$ such that $U_{1} \oplus U_{3} = U_{1} + U_{2}$.
+Find $\mathcal{U}_{3} \le \mathbb{R}^4$ such that $\mathcal{U}_{1} \oplus \mathcal{U}_{3} = \mathcal{U}_{1} + \mathcal{U}_{2}$.
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $ \newline
+To show $\mathcal{U}_1 + \mathcal{U}_2$ is not a direct sum, we will show that $\mathcal{U}_2 \cap \mathcal{U}_2 \ne \{ \vec{0} \} $, where, in $\mathbb{R}^4$ case, $\vec{0} = (0,0,0,0)$.
+
+Consider the vector $\vec{v} = (1,0,0,0) \in \mathbb{R}^4$. Then $\vec{v}$ is in both $\mathcal{U}_1$ and $\mathcal{U}_{2}$, that is, $(1,0,0,0) \in \mathcal{U}_1 \cap \mathcal{U}_2$. Hence, $\mathcal{U}_2 \cap \mathcal{U}_2 \ne \{ \vec{0} \} $ and $\mathcal{U}_1 + \mathcal{U}_2$ is not a direct sum.
+
+\medskip
+Now find $\mathcal{U}_{3} \le \mathbb{R}^4$ such that $\mathcal{U}_{1} \oplus \mathcal{U}_{3} = \mathcal{U}_{1} + \mathcal{U}_{2}$. 
+
+First notice that $\mathcal{U}_1 + \mathcal{U}_2 = \mathbb{R}^4$ since for all $\vec{v} = (x, y, z, t) \in \mathbb{R}^4$, we can write it as $(x, y, z,t) = (x, y, 0, 0) + (0, 0, z, t)$, where trivially $(x, y, 0, 0) \in \mathcal{U}_1$ and $(0, 0, z, t) \in \mathcal{U}_2$.
+
+Take $\mathcal{U}_3 = \{ (0,0,z,t) | z, t \in \mathbb{R} \}$. $\mathcal{U}_3$ is a subspace of $\mathbb{R}^4$ since:
+
+1) $(0,0,0,0) \in \mathcal{U}_3$ (by taking $z, t =0$)
+
+2) closed under addition since for all vector in $\mathcal{U}_3$, their sum will always have first two components to be zero (since $0+0 =0 $).
+
+3) closed under scaler multiplication for similar reasoning as addition (since $\lambda \cdot 0 = 0$).
+
+Clearly that $\mathcal{U}_1 + \mathcal{U}_3 = \mathbb{R}^4$, and to show this is direct sum, we will show that their intersection is the zero vector.
+
+Let $\vec{v} = (x, y, z,t) \in \mathcal{U}_1 \cap \mathcal{U}_3$, then $\vec{v} \in \mathcal{U}_1$ and $\vec{v} \in \mathcal{U}_3$. $\vec{v} \in \mathcal{U}_1$ implies that $z, t = 0$ and $\vec{v} \in \mathcal{U}_3$ implies that $x, y = 0$. Hence $\vec{v} = (0,0,0,0) = \vec{0} $ and so $\mathcal{U}_1 + \mathcal{U}_3$ is a direct sum and $\mathcal{U}_1 \oplus \mathcal{U}_3 = \mathcal{U}_1 + \mathcal{U}_2$.
+
 \end{proof}
 
 
@@ -340,12 +364,24 @@ $\bullet$ \textbf{Problem 9}
 \medskip
 
 \begin{itshape}
-Let $\mathcal{S}$ be the set of all complex valued sequences $\{ x_{n} \}$ with the property that there is $k \in \mathcal{N}$ such that for all $n \ge k$, $x_{n} = 0$. Prove $\mathcal{S}$ is a subspace of $\mathbb{C}^\infty$.
+Let $\mathcal{S}$ be the set of all complex valued sequences $\{ x_{n} \}$ with the property that there is $k \in \mathbb{N}$ such that for all $n \ge k$, $x_{n} = 0$. Prove $\mathcal{S}$ is a subspace of $\mathbb{C}^\infty$.
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $ \newline
+
+\textbf{1) $\vec{0} \in \mathcal{S}$:}
+
+$\vec{0}$ in $\mathbb{C}^\infty$ is the constant zero sequence. Clearly it converges to $0$, so $\vec{0} \in \mathcal{S}$.
+
+\textbf{2) closed under addition:}
+
+Let $\{ x_n \}, \{ y_n \} \in \mathcal{S}$, then there exists $k_x \in \mathbb{N}$ such that for all $n \ge k_x$, $x_n =0$, similarly there exist $k_y$ for $\{ y_n \}$. Take $k = min\{ k_x, k_y \}$. Then for all $n \ge k$, $x_n = y_n =0$. So for all $n \ge k$, $ x_n + y_n \in \{x_n\} + \{y_n \}$ is zero and hence $\{x_n\} + \{y_n \} \in \mathcal{S}$.
+
+\textbf{(3) closed under scalar multiplication:}
+
+Let $\{ x_n \} \in \mathcal{S}$, $ \lambda \in \mathcal{F} = \mathbb{C}$, then there exists $k \in \mathbb{N}$ such that for all $n \ge k$, $x_n =0$. With the same $k$, $\lambda x_n = 0$ for all $n \ge k$ since $\lambda \cdot 0$ is always zero. Hence the sequence $\lambda \{x_n \}$ converges to zero and so it's in $\mathcal{S}$.
 \end{proof}
 
 \end{document}
