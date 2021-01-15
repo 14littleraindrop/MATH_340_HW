@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{WINTER 2021 --- MATH 340 HW2}
+\rhead{Helen (Yeu) Chen}
+\setlength{\parindent}{0cm}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{systeme}
+
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+
+$ \bullet$ \textbf{Problem 1}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{V} = \mathcal{P}(\mathbb{R})$, the space of all polynomials with real coefficients.
+
+Describe $Span \{ 1,x,x^2 \}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Claim: $Span \{ 1,x,x^2 \} = \mathcal{P}_2(\mathbb{R})$.
+\medskip
+
+The span of set $\{ 1, x, x^2 \} $ by definition is the set of all the linear combinations of the elements in the set. So, $Span \{ 1,x,x^2 \} = a \cdot 1 + b \cdot x + c \cdot x^2 = a +bx+cx^2$ where $a,b,c$ are elements of the field (so in this case, $\mathbb{R}$). And it is trivial that $a+bx+cx^2$ includes any polynomial which has a degree less than or equal to 2, hence, $Span \{ 1,x,x^2 \} = \mathcal{P}_2(\mathbb{R})$.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 2}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{V} = \mathcal{P}(\mathbb{R})$. Is $x^3-3x+5$ in $Span\{ x^3+2x^2-x+1, x^3+3x^2-1 \}$?
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Claim: Yes.
+
+\medskip
+We will prove this by writing $x^3-3x+5$ as a linear combination of $x^3+2x^2-x+1$ and $x^3+3x^2-1$. That is,
+\begin{align*}
+x^3-3x+5 &= a(x^3+2x^2-x+1) + b(x^3+3x^2-1) \\
+&= (a+b)x^3+(2a+3b)x^2 -ax +(a-b)
+\end{align*}
+where $a ,b \in \mathbb{R}$. This gives a system of equation,
+\[
+\systeme*{a+b=1,2a+3b =0,-a=-3, a-b =5}
+\]
+The third equation tells us that $a=3$, and plug it back to the first equation we get $b=-2$. It is easy to see that these value also satisfy the remaining two equations. Hence, 
+$$ x^3-3x+5 = 3(x^3+2x^2-x+1) -2(x^3+3x^2-1)$$
+and so $x^3-3x+5$ is in $Span\{ x^3+2x^2-x+1, x^3+3x^2-1 \}$
+
+
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 3}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{V} = \mathbb{R}^{[0,1]}$, the space of all real functions defined on $[0,1]$. Let $\mathcal{S} = \{ f:[0,1] \to \mathbb{R} | \exists x,f(x)=1 \}$.
+
+Is $\mathcal{S}$ linearly independent?
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Claim: $\mathcal{S}$ is not linearly independent.
+\medskip
+Consider the following function in $\mathcal{S}$:
+$$f_1(x) = 1-x, f_2(x)=x, f_3 = 1$$
+Notice that they are indeed in $\mathcal{S}$ since $f_1(0)= f_2(1)= f_3(x)=1$.
+Also note that these three functions are not linearly independent since
+\begin{align*}
+f_1(x) + f_2(x) + (-1) \cdot f_3(x) &= (1-x)+x-1 \\
+&= 0
+\end{align*} 
+Hence, $\mathcal{S}$ is linearly dependent.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 4}
+\medskip
+
+\begin{itshape}
+Suppose that $\mathcal{V}$ is a vector space and that $\mathcal{S}_1 \subseteq \mathcal{S}_2 \subseteq \mathcal{V}$. Prove that if $\mathcal{S}_1$ spans $\mathcal{V}$ then $\mathcal{S}_2$ also spans $\mathcal{V}$, and if $\mathcal{S}_2$ is independent then  $\mathcal{S}_1$ is also independent.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+First show $\mathcal{S}_1$ spans $\mathcal{V} \Rightarrow \mathcal{S}_2$ spans $\mathcal{V}$.
+
+Since $\mathcal{S}_1$ spans $\mathcal{V}$, by theorem proved in class, $\mathcal{S}$ contains a basis for $\mathcal{V}$. Call this basis $\mathcal{B}$, then $\mathcal{B} \subseteq \mathcal{S}_1 \subseteq \mathcal{S}_2$. Notice that for all vectors $\vec{v} $ in $\mathcal{S}_2$ which is not in $\mathcal{B}$, since $\vec{v} \in \mathcal{V}$ so we can write $\vec{v}$ as a linear combination of elements in $\mathcal{B}$. Hence, any linear combination of vectors in $\mathcal{S}_2$ is also a linear combination of vectors in $\mathcal{B}$. So $Span(\mathcal{S}_2) =Span(\mathcal{B}) = \mathcal{V}$.
+
+\bigskip
+Now show that $\mathcal{S}_2$ independent $\Rightarrow \mathcal{S}_1$ independent.
+
+To show that $\mathcal{S}_1$ in linearly independent, we want to show that for any finite list $\vec{v}_1, \vec{v}_2, \cdots , \vec{v}_n$ of vectors in $\mathcal{S}_1$, $\vec{v}_1, \cdots, \vec{v}_n$ are linearly independent. For any such list, since $\mathcal{S}_1 \subseteq \mathcal{S}_2$, $\vec{v}_1, \cdots, \vec{v}_n \in \mathcal{S}_2$. And because $\mathcal{S}_2$ is a linearly independent set, $\vec{v}_1, \cdots, \vec{v}_n$ must be linearly independent. This shows that $\mathcal{S}_1$ is independent. 
+
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 5}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{U}$, $\mathcal{V} \le \mathbb{R}^4$, $\mathcal{U} = Span \{ (1,1,0,0) \}$, $\mathcal{V} = Span \{ (0,0,1,0), (0,0,0,1) \}$.
+
+Verify $\mathcal{U} + \mathcal{V}$ is a direct sum and find a basis for $\mathcal{U} \oplus \mathcal{V}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 6}
+\medskip
+
+\begin{itshape}
+Verify that $\mathcal{S} = \{ x+1, x-1 \}$ is independent in $\mathcal{P}_{3} (\mathbb{R})$ and extend $\mathcal{S}$ to a basis for $\mathcal{P}_{3} (\mathbb{R})$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 7}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{U} = \{ p \in \mathcal{P}_4(\mathbb{R}) | \int_{-1}^1 p(x) \,dx = 0 \}$
+
+Prove $\mathcal{U}$ is a subspace of $\mathcal{P}_4 (\mathbb{R})$.
+
+Find a basis for $\mathcal{U}$. Extend the basis you found to a basis for $\mathcal{P}_4(\mathbb{R})$.
+
+Find $\mathcal{W} \le \mathcal{P}_4(\mathbb{R})$ such that $\mathbb{P}_4(\mathbb{R}) = \mathcal{U} \oplus \mathcal{W}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 8}
+\medskip
+
+\begin{itshape}
+Prove $\mathbb{R}^ \infty$ (the space of all sequences of real numbers) is not finite dimensional.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\end{proof}
+
+
+\end{document}
