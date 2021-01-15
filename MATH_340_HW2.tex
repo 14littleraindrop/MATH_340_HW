@@ -129,6 +129,25 @@ Verify $\mathcal{U} + \mathcal{V}$ is a direct sum and find a basis for $\mathca
 
 \begin{proof}
 $ $\newline
+First show $\mathcal{U} + \mathcal{V}$ is a direct sum by showing that their intersection is the zero vector.
+\begin{align*}
+\mathcal{U} \cap \mathcal{V} &= Span\{ (1,1,0,0) \} \cap Span\{ (0,0,1,0) , (0,0,0,1) \} \\
+&= \{ (x,x,0,0) | x \in \mathbb{R} \} \cap \{ (0,0,y,z) | y,z, \in \mathbb{R} \} \\
+&= \{ (0,0,0,0) \} \\
+&= \vec{0}
+\end{align*}
+Hence the sum between $\mathcal{U}$ and $\mathcal{V}$ is direct.
+\bigskip
+
+Next, I claim that a basis for $\mathcal{U} \oplus \mathcal{V}$ is $\mathcal{B} = \{ (1,1,0,0), (0,0,1,0), (0,0,0,1) \}$.
+
+Clearly, $\mathcal{B}$ is a linearly independent set, so what is left to show is that $\mathcal{B}$ spans $\mathcal{U} \oplus \mathcal{V}$.
+
+Let $\vec{x} \in \mathcal{U} \oplus \mathcal{V}$, then we can write $\vec{x}$ as $\vec{x} = \vec{u} + \vec{v}$, where $\vec{u} \in \mathcal{U}$ and $\vec{v} \in \mathcal{V}$. Since $\vec{u} \in \mathcal{U} = Span\{ (1,1,0,0) \} $, it can be written as a linearly combination of $(1,1,0,0)$, so $\vec{u} = a(1,1,0,0)$ (with $a \in \mathbb{R}$). Similarly, since $\vec{v} \in \mathcal{V}=Span\{ (0,0,1,0), (0,0,0,1) \}$ we can write it as $\vec{v} = b(0,0,1,0) + c(0,0,0,1)$ (with $b, c \in \mathbb{R}$). Hence, $\vec{x} = \vec{u} +\vec{v} =  a(1,1,0,0) + b(0,0,1,0)+c(0,0,0,1)$ and so $\vec{x} \in Span(\mathcal{B})$. This shows $\mathcal{U} \oplus \mathcal{V} \subseteq Span(\mathcal{B})$.
+
+Now let $\vec{x} \in Span(\mathcal{B})$, then $\vec{x}$ can be written as a linear combination of vectors in $\mathcal{B}$, $\vec{x} = a(1,1,0,0) + b(0,0,1,0)+ c(0,0,0,1)$ (where $a,b,c \in \mathbb{R}$). Notice that $a(1,1,0,0) \in Span\{ (1,1,0,0) \} = \mathcal{U}$ and $b(0,0,1,0) + c(0,0,0,1) \in Span \{ (0,0,1,0), (0,0,0,1) \} = \mathcal{V}$. So, $\vec{x}$ is the sum of vectors from $\mathcal{U}$ and $\mathcal{V}$, hence, $\vec{x} \in \mathcal{U} \oplus \mathcal{V}$ and $Span(\mathcal{B}) \subseteq \mathcal{U} \oplus \mathcal{V}$.
+
+The above shows that $Span(\mathcal{B}) = \mathcal{U} \oplus \mathcal{V}$, where $\mathcal{B} = \{ (1,1,0,0), (0,0,1,0), (0,0, 0,1) \}$.
 \end{proof}
 
 \newpage
@@ -142,6 +161,38 @@ Verify that $\mathcal{S} = \{ x+1, x-1 \}$ is independent in $\mathcal{P}_{3} (\
 
 \begin{proof}
 $ $\newline
+First show $\mathcal{S} = \{ x+1 , x-1 \} $ is independent. 
+
+Let $a(x+1) + b(x-1) = 0$, then rearrange gives $(a+b)x + (a-b) =0$. This further gives,
+\[
+\systeme{a+b=0,a-b=0}
+\]
+Solving the system equation one will find that $2a=2b=0$, so it is trivial to conclude that $a=b=0$. This shows $\mathcal{S}$ is linearly independent.
+\bigskip
+
+By theorem proved in class, we know that since $\mathcal{S}$ is independent, $\mathcal{S} \subseteq \mathcal{P}_3(\mathbb{R})$ can be extended to a basis of $\mathcal{P}_3(\mathbb{R})$. I claim that $\mathcal{B} = \{ x+1, x-1, x^2, x^3 \}$ is a basis of $\mathcal{P}_3(\mathbb{R})$.
+
+Let $\vec{v} \in Span(\mathcal{B})$, then
+\begin{align*}
+\vec{v} &= a(x+1)+b(x-1)+cx^2+dx^3 \\
+&= (a-b)+(a+b)x+cx^2+dx^3
+\end{align*}
+where $a,b,c,d \in \mathbb{R}$. So $\vec{v} \in \mathcal{P}_3(\mathbb{R})$ and $Span(\mathcal{B}) \subseteq \mathcal{P}_3(\mathbb{R})$.
+
+Let $\vec{v} \in \mathcal{P}_3(\mathbb{R})$, then $\vec{v} = a+bx+cx^2+dx^3$ where $a,b,c,d \in \mathbb{R}$. Take
+\[ 
+\systeme*{a = a'-b', b = a'+b', c=c', d=d'}
+\]
+then
+\begin{align*}
+\vec{v} &= (a'-b') + (a'+b')x + c'x^2+d'x^3 \\
+&= a'(x+1)+b'(x-1)+c'x^2+d'x^3
+\end{align*}
+Hence, $\vec{v}$ is a linear combination of vectors in $\mathcal{B}$, that is, $\vec{v} \in Span(\mathcal{B})$. So, $\mathcal{P}_3(\mathbb{R}) \subseteq Span(\mathcal{B})$.
+
+The above shows $\mathcal{P}_3(\mathbb{R}) = Span(\mathcal{B})$, in other words, $\mathcal{B}$ spans $\mathcal{P}_3(\mathbb{R})$.
+
+Since $x^2$ and $x^3$ are clearly linearly independent to each other and not in $Span(\mathcal{S})$, $\mathcal{B}$ is linearly independent so it is a basis of $\mathcal{P}_3(\mathbb{R})$.
 \end{proof}
 
 \newpage
