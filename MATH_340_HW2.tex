@@ -325,6 +325,9 @@ Prove $\mathbb{R}^ \infty$ (the space of all sequences of real numbers) is not f
 
 \begin{proof}
 $ $\newline
+Suppose $\mathbb{R}^\infty$ is finite dimensional, namely, with dimension $k$, then let $\mathcal{B} = \{ \{x_{n_1} \}, \{x_{n_2} \}, \cdots , \{x_{n_k} \} \}$ be the basis for $\mathbb{R}^\infty$. Take $$I= \{ \{1, 0, 0, \cdots \}, \{0, 1,0, \cdots \}, \cdots , \{ \text{k zeros}, 1, 0 \cdots \}  \}$$ (i.e. the first sequence has first term to be 1 and all other terms zero, second sequence with second term be 1 and all other terms zeros...etc. and $I$ has $k+1$ sequences.)
+
+Clearly, this set is a linearly independent subset of $\mathbb{R}^\infty$, so by the replacement theorem, $| \mathcal{I} | \le | \mathcal{B} |$. However, we know that this is not true since $| \mathcal{I} | = k+1$ and $ | \mathcal{B} | = k$. Hence, there is a contradiction and $\mathbb{R}^\infty$ can't be finite dimensional.
 \end{proof}
 
 
