@@ -212,6 +212,106 @@ Find $\mathcal{W} \le \mathcal{P}_4(\mathbb{R})$ such that $\mathbb{P}_4(\mathbb
 
 \begin{proof}
 $ $\newline
+Show that $\mathcal{U} \le \mathcal{P}_4(\mathbb{R})$.
+
+1) $\vec{0} = 0 \in \mathcal{U}$:
+
+Clearly integrate zero over $[-1, 1]$ is still zero. Hence, indeed $p(x) = 0 \in \mathcal{U}$.
+\medskip
+
+2) closed under addition:
+
+let $f(x), g(x) \in \mathcal{U}$, then $\int_{-1}^1 f(x) \, dx =0$ and $\int_{-1}^1 g(x) \, dx =0$. Since
+\begin{align*}
+\int_{-1}^1 (f+g)(x) \, dx &= \int_{-1}^1 (f(x) + g(x)) \, dx =0 \\
+&= \int_{-1}^1 f(x) \, dx + \int_{-1}^1 g(x) \, dx \\
+&= 0 + 0 \\
+&=0
+\end{align*}
+Thus, $(f+g)(x) \in \mathcal{U}$.
+\medskip
+
+3) closed under scalar multiplication:
+
+Let $f(x) \in \mathcal{U}$ and $\lambda \in \mathcal{F} = \mathbb{R}$, then $\int_{-1}^1 f(x) \, dx =0$. Since 
+\begin{align*}
+\int_{-1}^1 \lambda \cdot f(x) \, dx &= \lambda \int_{-1}^1 f(x) \, dx \\
+&= \lambda \cdot 0 \\
+&= 0 
+\end{align*}
+So $\lambda f(x) \in \mathcal{U}$
+\medskip
+
+This shows that $\mathcal{U}$ is a subspace of $\mathcal{P}_4 (\mathbb{R})$.
+\bigskip
+
+I claim that $\mathcal{B} = \{ -\frac{1}{3}+x^2, -\frac{1}{5}+x^4 , x, x^3 \}$ is a basis of $\mathcal{U}$. 
+First of all, $\mathcal{B}$ is clearly independent because non of the elements share the same $x^n$ term. What is left to be shown is $Span(\mathcal{B}) = \mathcal{U}$.
+
+Let $\vec{v} \in Span(\mathcal{B})$, then we can write $\vec{v} = a(-\frac{1}{3}+x^2)+b(-\frac{1}{5}+x^4 )+cx+dx^3$ with $a,b,c,d \in \mathbb{R}$. Since 
+\begin{align*}
+\int_{-1}^1 \vec{v} \, dx &= \int_{-1}^1 a(-\frac{1}{3}+x^2)+b(-\frac{1}{5}+x^4 )+cx+dx^3 \, dx \\
+&= \int_{-1}^1 a(-\frac{1}{3}+x^2) \, dx + \int_{-1}^1 b(-\frac{1}{5}+x^4 ) \, dx + \int_{-1}^1 cx \, dx+ \int_{-1}^1 dx^3 \, dx \\
+&= a(-\frac{1}{3}x+\frac{1}{3}x^3) \bigm|_{-1}^1 +b(-\frac{1}{5}x+\frac{1}{5}x^5) \bigm|_{-1}^1+ \frac{c}{2}x^2 \bigm|_{-1}^1 + \frac{d}{4}x^4 \bigm|_{-1}^1 \\
+&= a[(-\frac{1}{3}+\frac{1}{3}) -(\frac{1}{3}-\frac{1}{3})] + b[(-\frac{1}{5}+\frac{1}{5}) -(\frac{1}{5}-\frac{1}{5})] + \frac{c}{2}(1-1)+ \frac{d}{4}(1-1) \\
+&= a \cdot 0 + b\cdot 0 + c \cdot 0 +d \cdot 0 \\
+&= 0
+\end{align*}
+Hence $\vec{v} \in \mathcal{U}$ and $Sapn(\mathcal{B}) \subseteq \mathcal{U}$.
+
+Now let $\vec{v} = a + bx+cx^2+dx^3+ex^4 \in \mathcal{U}$ (where $a,b,c,d$ are some unknown coefficients), then
+\begin{align*}
+0 &= \int_{-1}^1 \vec{v} \, dx \\
+&= \int_{-1}^1 a+bx+cx^2+dx^3+ex^4 \, dx \\
+&= (ax + \frac{b}{2}x^2 + \frac{c}{3}x^3 + \frac{d}{4}x^4 + \frac{e}{5}x^5) \bigm|_{-1}^1 \\
+&= (a+ \frac{b}{2} + \frac{c}{3} +\frac{d}{4} +\frac{e}{5}) - (-a+ \frac{b}{2} - \frac{c}{3} +\frac{d}{4} -\frac{e}{5}) \\
+&= 2(a + \frac{c}{3} +\frac{e}{5})
+\end{align*}
+Hence $\vec{v} \in \mathcal{U}$ implies that $a+\frac{c}{3} +\frac{e}{5} =0$. Then,
+\begin{align*}
+\vec{v} &= a + bx+cx^2+dx^3+ex^4 \\
+&= -\frac{c}{3} -\frac{e}{5} + bx+cx^2+dx^3+ex^4 \\
+&= c(-\frac{1}{3}+x^2) + e(-\frac{1}{5} +x^4) +bx+dx^3
+\end{align*}
+This shows that $\vec{v}$ is a linear combination of vectors in $\mathcal{B}$, hence $\vec{v} \in Span(\mathcal{B})$ and $\mathcal{U} \subseteq Span(\mathcal{B})$.
+
+Hence, $Span(\mathcal{B}) = \mathcal{U}$ with $\mathcal{B} = \{ -\frac{1}{3}+x^2, -\frac{1}{5}+x^4 , x, x^3 \}$.
+
+Now we want to extend $\mathcal{B}$ to a basis for $\mathcal{P}_4(\mathbb{R})$. I claim that by just adding the constant $1$, we can extend $\mathcal{B}$ in to a basis for $\mathcal{P}_4(\mathbb{R})$. 
+
+By the similar reasoning we used on $\mathcal{B}$, $\mathcal{B'} = \{ -\frac{1}{3}+x^2, -\frac{1}{5}+x^4 , x, x^3 , 1\}$ is clearly independent. Then we will show that $Span(\mathcal{B'}) = \mathcal{P}_4(\mathbb{R})$.
+
+Let $\vec{v} \in Span(\mathcal{B'})$, then 
+\begin{align*}
+\vec{v} &= a(-\frac{1}{3}+x^2)+b(-\frac{1}{5}+x^4)+ cx+dx^3+e \cdot 1 \\
+&= (-a\frac{1}{3} -b\frac{1}{5} +e) + cx +ax^2+dx^3+bx^4
+\end{align*}
+so $\vec{v} \in \mathcal{P}_4(\mathbb{R})$ and hence $Span(\mathcal{B'}) \subseteq \mathcal{P}_4(\mathbb{R})$.
+
+Let $\vec{v} \in \mathcal{P}_4(\mathbb{R})$, then 
+\begin{align*}
+\vec{v} &= a+bx+cx^2+dx^3+ex^4 \\
+&= \frac{c}{3} -\frac{c}{3} +\frac{e}{5} -\frac{e}{5} + a+bx+cx^2+dx^3+ex^4 \\
+&= (\frac{c}{3} + \frac{e}{5} +a) + bx + (-\frac{c}{3} + cx^2) +dx^3+(-\frac{e}{5}+ex^4) \\
+&= (\frac{c}{3} + \frac{e}{5} +a) \cdot 1 + b  x + c  (-\frac{1}{3} + x^2) + d  x^3 + e  (-\frac{1}{5}+x^4)
+\end{align*}
+so $\vec{v}$ is a linear combination of vectors in $\mathcal{B'}$, hence $\mathcal{P}_4(\mathbb{R}) \subseteq \mathcal{B'}$.
+
+Thus, the above shows $Span(\mathcal{B'}) = \mathcal{P}_4(\mathbb{R})$, and so $\mathcal{B'} = \{ -\frac{1}{3}+x^2, -\frac{1}{5}+x^4 , x, x^3 , 1\}$ is a basis for $\mathcal{P}_4(\mathbb{R})$.
+\bigskip
+
+Now we wish to find $\mathcal{W} \le \mathcal{P}_4(\mathbb{R})$ such that $\mathcal{P}_4(\mathbb{R}) = \mathcal{U} \oplus \mathcal{W}$.
+
+Claim: $\mathcal{W} = \{a \in \mathbb{R} \}$ works (i.e. all constant functions).
+
+It is trivial that one basis for $\mathcal{W}$ is the constant function one, $f(x)=1$. And since we have concluded that $\mathcal{B'}$ is a basis for $\mathcal{P}_4(\mathbb{R})$. For all $\vec{v} \in \mathcal{P}_4(\mathbb{R})$,
+$$
+\vec{v} = [a(-\frac{1}{3}+x^2) + b (-\frac{1}{5}+x^4) + cx+dx^3]+[e \cdot 1] 
+$$
+Notice that the first square bracket is a vector in $\mathcal{U}$ because it is a linear combination of vectors in $\mathcal{B}$ (basis for $\mathcal{U}$); similarly, the last square bracket is a vector in $\mathcal{W}$. This implies that $\vec{v} \in \mathcal{U} + \mathcal{W}$, hence $\mathcal{P}_4(\mathbb{R}) \subseteq \mathcal{U} + \mathcal{W}$. The other direction of inclusion is also true since if $\vec{v} \in \mathcal{U} + \mathcal{W}$ then it can be written as a sum of vectors in $\mathcal{U}$ and $\mathcal{W}$, but each of them can be written as linear combinations of vectors from $\mathcal{B'}$, hence $\vec{v} \in \mathcal{P}_4(\mathbb{R})$. Thus, $\mathcal{P}_4(\mathbb{R}) = \mathcal{U} + \mathcal{W}$.
+\medskip
+
+To show this sum is direct, let $\vec{v} \in \mathcal{U} \cap \mathcal{W}$. Since $\vec{v} \in \mathcal{W}$, it must be a constant function. However, the only constant function that integrates to 0 over $[0,1]$ is the zero function, so $\vec{v} = 0$. Thus $\mathcal{U} \cap \mathcal{W} = \{ 0 \}$ and hence the sum is direct.
 \end{proof}
 
 \newpage
