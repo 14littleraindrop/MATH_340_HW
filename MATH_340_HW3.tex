@@ -4,7 +4,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{WINTER 2021 --- MATH 340 HW2}
+\lhead{WINTER 2021 --- MATH 340 HW3}
 \rhead{Helen (Yeu) Chen}
 \setlength{\parindent}{0cm}
 \usepackage{makecell}
@@ -24,12 +24,40 @@ $ \bullet$ \textbf{Problem 1}
 \medskip
 
 \begin{itshape}
-Prove that the function $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_4(\mathbb{R})$, $T(p(x)) = p(x) \cdot (x^2 +1)$ is a linear transformation. Describe $N(T)$. Is $x^4$ in $R(T)$?
+Prove that the function $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_4(\mathbb{R})$, $T(p(x)) = p(x) \cdot (x^2 +1)$ is a linear transformation. Describe $\mathcal{N}(T)$. Is $x^4$ in $\mathcal{R}(T)$?
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $\newline
+First show that $T$ is a linear transformation.
+
+Let $p(x), q(x) \in \mathcal{P}_2(\mathbb{R})$ and $\lambda \in \mathbb{R}$. Then
+\begin{align*}
+T(\lambda p(x)) &= \lambda p(x) \cdot (x^2+1) \\
+&= \lambda (p(x) \cdot (x^2+1)) \\
+&= \lambda T(p(x))
+\end{align*}
+\begin{align*}
+T(p(x) + q(x)) &= (p(x) +q(x)) \cdot (x^2+1) \\
+&= (p(x) \cdot (x^2+1)) + (q(x) \cdot (x^2+1)) \\
+&= T(p(x)) + T(q(x))
+\end{align*}
+This shows that $T$ is a linear transformation.
+\medskip
+
+Claim: $\mathcal{N}(T) = \{ p(x) = 0 \}$
+
+Write $p(x) \in \mathcal{P}_2(\mathbb{R})$ as $p(x) = ax^2+bx+c$. We want to fine all $p(x)$ such that $T(p(x)) = 0$.
+\begin{align*}
+T(p(x)) &= T(ax^2+bx+c) \\
+&= (ax^2+bx+c) \cdot (x^2+1) \\
+&= ax^4+bx^3+(a+c)x^2+bx+c
+\end{align*}
+So, $T(p(x)) = 0$ if and only if $a,b,c = 0$. Hence, only $p(x) = 0$ is in the null space of $T$.
+\medskip
+
+Claim: $x^4 \notin \mathcal{R}(T)$. If $x^4 \in \mathcal{R}(T)$, then there exists a $p(x) = ax^2+bx+c \in \mathcal{P}_2(\mathbb{R})$ such that $T(p(x)) =ax^4+bx^3+(a+c)x^2+bx+c= x^4$. However, the $x^4, x^3$ and constant components imply that $a=1, b=c=0$, but these coefficients will result in a nonzero $x^2$ component.  Hence, there is not $p(x)$ such that $T(p(x)) = x^4$, and so $x^4 \notin \mathcal{R}(T)$.
 \end{proof}
 
 \newpage
@@ -43,6 +71,20 @@ Is $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_4(\mathbb{R})$, $T(p) = p(x^2+1
 
 \begin{proof}
 $ $\newline
+Claim: Yes
+
+Let $p,q \in \mathcal{P}_2(\mathbb{R})$ and $\lambda \in \mathbb{R}$. Then
+\begin{align*}
+T(\lambda p) &= (\lambda p)(x^2+1) \\
+&= \lambda \cdot p(x^2+1) \\
+&= \lambda \cdot T(p(x)) 
+\end{align*}
+\begin{align*}
+T(p+q) &= (p+q)(x^2+1) \\
+&= p(x^2+1) + q(x^2+1) \\
+&= T(p) + T(q)
+\end{align*}
+Hence $T$ is a linear transformation.
 \end{proof}
 
 \newpage
@@ -104,5 +146,10 @@ $ \bullet$ \textbf{Problem 7}
 \begin{itshape}
 Let $\mathcal{V}$ be a vector space (not necessarily finite dimensional) and $\mathcal{S}_1 \subseteq \mathcal{S}_2 \subseteq \mathcal{V}$. Suppose $\mathcal{S}_1$ is linearly independent and $\mathcal{S}_2$ spans $\mathcal{V}$. Prove there is a basis $\mathcal{B}$ for $\mathcal{V}$ with $\mathcal{S}_1 \subseteq \mathcal{B} \subseteq \mathcal{S}_2$.
 \end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\end{proof}
 
 \end{document}
