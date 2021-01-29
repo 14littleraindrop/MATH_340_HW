@@ -1,0 +1,219 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{WINTER 2021 --- MATH 340 HW4}
+\rhead{Helen (Yeu) Chen}
+\setlength{\parindent}{0cm}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{systeme}
+
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+
+$ \bullet$ \textbf{Problem 1}
+\medskip
+
+\begin{itshape}
+Let $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_4(\mathbb{R})$, $T(p) = (x^2+1) \cdot p$. Find the matrix of the linear transformation $T$ with respect to the ordered bases $\mathcal{B}_1 = \{ 1, x,x^2 \}$ in $\mathcal{P}_2(\mathbb{R})$ and $\mathcal{B}_2 = \{ 1,x,x^2,x^3,x^4 \} $ in $\mathcal{P}_4(\mathbb{R})$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\begin{align*}
+T^{\mathcal{B}_2}_{\mathcal{B}_1} &= \begin{pmatrix} [T(1)]_{\mathcal{B}_2} & [T(x)]_{\mathcal{B}_2} & [T(x^2)]_{\mathcal{B}_2}  \end{pmatrix} \\
+&= \begin{pmatrix} [(x^2+1) \cdot 1]_{\mathcal{B}_2} & [(x^2+1) \cdot x]_{\mathcal{B}_2} & [(x^2+1) \cdot x^2]_{\mathcal{B}_2}  \end{pmatrix} \\
+&= \begin{pmatrix} [x^2+1]_{\mathcal{B}_2} & [x^3+x]_{\mathcal{B}_2} & [x^4+x^2]_{\mathcal{B}_2}  \end{pmatrix} \\
+&= \begin{pmatrix} 1 & 0 & 0 \\ 0& 1 & 0 \\ 1 &0&1 \\ 0&1&0 \\ 0& 0& 1 \end{pmatrix}
+\end{align*}
+We can check by letting $p = a+bx+cx^2 \in \mathcal{P}_2(\mathbb{R})$ then $[ a+bx+cx^2 ]_{\mathcal{B}_1} = (a,b,c)$. We want that 
+\begin{align*} 
+[T(p)]_{\mathcal{B}_2} &= [(x^2+1) \cdot (a+bx+cx^2) ]_{\mathcal{B}_2} \\
+&= [a+bx+(a+c)x^2+bx^3+cx^4]_{\mathcal{B}_2} \\
+&= (a, b, a+c, b, c)
+\end{align*}
+Check the matrix we see that
+\begin{align*}
+T^{\mathcal{B}_2}_{\mathcal{B}_1} [a+bx+cx^2]_{\mathcal{B}_1} &= \begin{pmatrix} 1 & 0 & 0 \\ 0& 1 & 0 \\ 1 &0&1 \\ 0&1&0 \\ 0& 0& 1 \end{pmatrix} \begin{pmatrix} a \\ b \\ c \end{pmatrix} \\
+&= \begin{pmatrix} a \\ b \\ a+c \\ b \\ c \end{pmatrix} \\
+&= [T(p)]_{\mathcal{B}_2}
+\end{align*}
+So indeed the matrix we found is correct.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 2}
+\medskip
+
+\begin{itshape}
+Prove $\mathcal{B} = \{x,x^2+1,x^2-1,x^3,x^4\}$ is a basis for $\mathcal{P}_4(\mathbb{R})$. Find the matrix of the linear transformation $T$ in problem 1 with respect to the basis $\mathcal{B}_1 = \{ 1,x,x^2 \} $ in $\mathcal{P}_2(\mathbb{R})$ and $ \{x, x^2+1, x^2-1, x^3, x^4 \}$ in $\mathcal{P}_4(\mathbb{R})$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Given any $p = a+bx+cx^2+dx^3+ex^4 \in \mathcal{P}_4(\mathbb{R})$, write
+\begin{align*}
+a+bx+cx^2+dx^3+ex^4 &= \frac{1}{2}(a + a +  c - c) +bx+\frac{1}{2}(c +  c + a -a) x^2+dx^3+ex^4 \\
+&= \frac{1}{2}(c+a) - \frac{1}{2}(c-a) + bx + \frac{1}{2}(c+a)x^2 +\frac{1}{2}(c-a)x^2 +dx^3+ex^4 \\
+&= \frac{1}{2}(c+a)(x^2+1)+\frac{1}{2}(c-a)(x^2-1)+bx+dx^3+ex^4 
+\end{align*}
+So $p= a+bx+cx^2+dx^3+ex^4$ can be written as a linear combination of vectors in $\mathcal{B}$, hence $\mathcal{P}_4(\mathbb{R}) \subseteq Span(\mathcal{B})$. And clearly, any linear combination of vectors in $\mathcal{B}$ is a polynomial of degree less than or equal to 4, hence must be in $\mathcal{P}_4(\mathbb{R})$. So $Span(\mathcal{B}) = \mathcal{P}_4(\mathbb{R})$, i.e $\mathcal{B}$ is a basis for $\mathcal{P}_4(\mathbb{R})$.
+\bigskip
+
+Now find the matrix representation of $T$ with respect to this new basis.
+\begin{align*}
+T_{\mathcal{B}_1}^{\mathcal{B}} &= \begin{pmatrix}  [T(1)]_{\mathcal{B}} & [T(x)]_{\mathcal{B}} & [T(x^2)]_{\mathcal{B}}  \end{pmatrix} \\ 
+&= \begin{pmatrix}  [x^2+1]_{\mathcal{B}} & [x^3+x]_{\mathcal{B}} & [x^4+x^2]_{\mathcal{B}}  \end{pmatrix} \\ 
+&= \begin{pmatrix} [x^2+1]_{\mathcal{B}} & [x^3+x]_{\mathcal{B}} & [x^4+\frac{1}{2}(x^2+1)+\frac{1}{2}(x^2-1)]_{\mathcal{B}}  \end{pmatrix} \\
+&= \begin{pmatrix} 0 &1&0 \\ 1&0&\frac{1}{2} \\ 0&0&\frac{1}{2} \\ 0&1&0 \\0&0&1 \end{pmatrix}
+\end{align*}
+
+Check: Let $p = a+bx+cx^2 \in \mathcal{P}_2(\mathbb{R})$, we know that $T(p) = a+bx+(a+c)x^2+bx^3+cx^4$.
+\begin{align*}
+[ T(p)]_{\mathcal{B}} &= \begin{pmatrix} 0 &1&0 \\ 1&0&\frac{1}{2} \\ 0&0&\frac{1}{2} \\ 0&1&0 \\0&0&1 \end{pmatrix} \begin{pmatrix} a \\ b\\c \end{pmatrix} \\
+&= \begin{pmatrix} b \\ a+\frac{1}{2}c \\ \frac{1}{2}c \\ b \\ c \end{pmatrix} \\
+\end{align*}
+Changing the coordinates form to polynomial form according to $\mathcal{B}$ we have 
+\begin{align*}
+\begin{pmatrix} b \\ a+\frac{1}{2}c \\ \frac{1}{2}c \\ b \\ c \end{pmatrix} & \Rightarrow bx + (a+\frac{1}{2}c)(x^2+1) + \frac{1}{2}c(x^2-1) + bx^3 + cx^4 \\
+&= bx + ax^2+a +\frac{1}{2}cx^2+\frac{1}{2}c + \frac{1}{2}cx^2-\frac{1}{2}c +bx^3 +cx^4 \\
+&= a+ bx+(a+c)x^2+bx^3+cx^4
+\end{align*}
+indeed have the result we wanted.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 3}
+\medskip
+
+\begin{itshape}
+Suppose $\mathcal{V}$ and $\mathcal{W}$ are vector spaces and $T,S$ are non zero linear transformations in $\mathcal{L}(\mathcal{V}, \mathcal{W})$ (the space of all linear transformations from $\mathcal{V}$ to $\mathcal{W}$). 
+
+Prove that if $\mathcal{R}(S) \cap \mathcal{R}(T) = \{ \vec{0} \} $, then $S$ and $T$ are linearly independent.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Prove by contradiction. Suppose $\mathcal{R}(S) \cap \mathcal{R}(T) = \{ \vec{0} \}$ and $S,T$ are linearly dependent. Since $S$ and $T$ are linearly dependent, we can write one as a scalar multiple of the other, i.e $S=kT$ (with $k \ne 0$, otherwise $S$ will be the zero transformation).
+
+Since $T$ is a non zero transformation, there exists $\vec{v} \in \mathcal{V}$ such that $T(\vec{v})=\vec{w_T} \ne \vec{0}$. So, $S(\vec{v}) = (kT)(\vec{v}) = kT(\vec{v}) = k\vec{w_T} \in \mathcal{R}(S)$. Recall that the range of a linear transform is a subspace of the codomain, so since $\vec{w_T} \in \mathcal{R}(T)$,  $k \vec{w_T} \in \mathcal{R}(T)$. Then we have $k \vec{w_T} \ne \vec{0}$ (since $k \ne 0$ and $\vec{w_T} \ne \vec{0}$) and $k \vec{w_T} \in \mathcal{R}(S) \cap \mathcal{R}(T)$, contradiction.
+
+Thus, $S$ and $T$ must be linearly independent. 
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 4}
+\medskip
+
+\begin{itshape}
+Let $T_j: \mathcal{P}(\mathbb{R})$, $T_j(p)=p^{(j)}$ (the jth derivative of $p$).
+
+Prove that for any $n \ge 1$ the set $\{T_1, \cdots , T_n \}$ is a linearly independent subset of $\mathcal{L}(\mathcal{P}(\mathbb{R}))$ (the space of all linear transformations $T: \mathcal{P}(\mathbb{R}) \to \mathcal{P}(\mathbb{R})$). 
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+First show that differentiation is a linear transformation.
+
+Let $p, q \in \mathcal{P}(\mathbb{R})$. Then from our knowledge from calculus, $(p+q)' = p' +q'$ and $(kp)' = kp'$. Hence, the first derivative is indeed a linear transformation. Since any higher order derivative is just a functions composition of the first derivative, by induction we can easily show that any higher order derivative is also a linear transformation.
+\bigskip
+
+Fix a $n \ge 1$. Let $$ \lambda_1T_1+\lambda_2T_2 + \cdots+ \lambda_nT_n = 0$$ 
+That is, $ \lambda_1T_1+\lambda_2T_2 + \cdots+ \lambda_nT_n$ is the zero transformation, so any polynomial we feed in will return us a zero constant function.
+
+Consider $x^n \in \mathcal{P}(\mathbb{R})$ and notice that $T_j(x^n) = \frac{n!}{(n-j)!}x^{n-j}$ if $ n \ge j$ and $T_j(x^n) = 0$ if $ j > n $. So if we feed in $x^n$, then 
+\begin{align*}
+(p(x)=0) &=  (\lambda_1T_1+\lambda_2T_2 + \cdots+ \lambda_nT_n)(x^n) \\
+&= \lambda_1T_1(x^n) +\lambda_2T_2(x^n)+ \cdots + \lambda_nT_n(x^n) \\
+&= \sum_{j=1}^{n} \lambda_j \frac{n!}{(n-j)!}x^{n-j}
+\end{align*}
+By definition of the zero polynomial, $ \lambda_j \frac{n!}{(n-j)!} = 0$ for all $j$. Since $\frac{n!}{(n-j)!}$ is never zero, $\lambda_j$ must be zero for all $j$. Hence, this shows that the set $\{T_1, \cdots, T_n \}$ is linearly independent.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 5}
+\medskip
+
+\begin{itshape}
+Find a linear transformation $T: \mathcal{P}_2(\mathbb{R}) \to \mathcal{P}_3(\mathbb{R})$ with $\mathcal{R}(T) = Span(\{1+x, x^2 \})$ and $\mathcal{N}(T) = Span(\{x\})$.
+
+Give the matrix of $T$ with respect to $\mathcal{B}_1 = \{ 1,x,x^2 \}$ and $\mathcal{B}_2=\{1,x,x^2,x^3 \}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+I claim that the linear transformation defined by: $$T(1) = 1+x,T(x) = 0,T(x^2) = x^2$$ satisfies the requirement. In matrix form, $$T= \begin{pmatrix} 1&0&0 \\ 1&0&0 \\ 0&0&1 \\ 0&0&0 \end{pmatrix}$$
+
+Let $p = a+bx+cx^2 \in \mathcal{P}_2(\mathbb{R})$. If
+\begin{align*}
+\begin{pmatrix} 0\\0\\0\\0 \end{pmatrix} &= T p \\
+&= \begin{pmatrix} 1&0&0 \\ 1&0&0 \\ 0&0&1 \\ 0&0&0 \end{pmatrix} \begin{pmatrix} a \\ b\\c \end{pmatrix} \\
+&= \begin{pmatrix} a \\a \\c \\ 0 \end{pmatrix} 
+\end{align*}
+then this implies that $a=c=0$. Hence, 
+\begin{align*}
+\mathcal{N}(T) &= \{ a+bx+cx^2 \in \mathcal{P}_2(\mathbb{R}) \; | \; a= c=0, b \in \mathbb{R} \} \\
+&= \{ bx \in \mathcal{P}_2(\mathbb{R}) \; | b \in \mathbb{R} \} \\
+&= Span(\{x\})
+\end{align*}
+Now check the range. Let $p \in Span(\{1+x, x^2 \})$, then we can write $p = \lambda_1(1+x) + \lambda_2x^2$. Take $\lambda_1 + \lambda_1 x + \lambda_2 x^2 \in \mathcal{P}_2(\mathbb{R})$, then 
+\begin{align*}
+T \begin{pmatrix} \lambda_1 \\ \lambda_1 \\ \lambda_2 \end{pmatrix} &=  \begin{pmatrix} 1&0&0 \\ 1&0&0 \\ 0&0&1 \\ 0&0&0 \end{pmatrix} \begin{pmatrix} \lambda_1 \\ \lambda_1 \\ \lambda_2 \end{pmatrix} \\
+&= \begin{pmatrix} \lambda_1 \\ \lambda_1 \\ \lambda_2 \\ 0 \end{pmatrix}\\
+&\Rightarrow \lambda_1(1+x)+\lambda_2x^2 = p
+\end{align*}
+Hence, $p \in \mathcal{R}(T)$ and $Span(\{1+x, x^2 \}) \subseteq \mathcal{R}(T)$.
+
+Now let $p \in \mathcal{R}(T)$, then there exist $\alpha_0+\alpha_1 x+\alpha_2 x^2 \in \mathcal{P}_2(\mathbb{R})$ such that $p = T(\alpha_0+\alpha_1 x+\alpha_2 x^2)$.
+\begin{align*}
+p = T(\alpha_0+\alpha_1 x+\alpha_2 x^2) & \Rightarrow \begin{pmatrix} 1&0&0 \\ 1&0&0 \\ 0&0&1 \\ 0&0&0 \end{pmatrix} \begin{pmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \end{pmatrix} \\
+&= \begin{pmatrix} \alpha_0 \\ \alpha_0 \\\alpha_2 \\0 \end{pmatrix} \\
+&= \alpha_0 \begin{pmatrix} 1 \\1 \\0\\0 \end{pmatrix} + \alpha_2 \begin{pmatrix} 0 \\0\\ 1\\ 0 \end{pmatrix} \\
+& \Rightarrow \alpha_0(1+x)+\alpha_2x^2
+\end{align*} 
+so $p \in Span(\{ 1+x, x^2 \})$ and $ \mathcal{R}(T) \subseteq Span(\{1+x, x^2 \} )$.
+
+Hence $ \mathcal{R}(T) = Span(\{1+x, x^2 \} )$.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 6}
+\medskip
+
+\begin{itshape}
+Let $T: \mathcal{V} \to \mathcal{V}$ be a linear transformation.
+
+Prove that $T^2=0$ (i.e. $T \circ T =0$) if and only if $\mathcal{R}(T) \subseteq \mathcal{N}(T)$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+"$\Rightarrow$": prove by contradiction. 
+
+Let $T^2 = 0$ and $ \mathcal{R}(T) \not\subseteq \mathcal{N}(T)$. Since $ \mathcal{R}(T) \not\subseteq \mathcal{N}(T)$, there exists $\vec{v} \in \mathcal{V}$ such that $\vec{v} \in \mathcal{R}(T)$ and $\vec{v} \notin \mathcal{N}(T)$. Since $\vec{v} \in \mathcal{R}(T)$ there exists $\vec{v_0} \in \mathcal{V}$ such that $T(\vec{v_0}) = \vec{v}$. Because $\vec{v} = T(\vec{v_0}) \notin \mathcal{N}(T)$, $T(\vec{v}) = T(T(\vec{v_0})) = T^2(\vec{v_0}) \ne 0$, contradicts that $T^2 =0$.
+
+Hence, if $T^2=0$ then $\mathcal{R}(T) \subseteq \mathcal{N}(T)$ must be true.
+\bigskip
+
+"$\Leftarrow$":
+
+Let $\vec{v} \in \mathcal{V}$. Then $T(\vec{v}) \in \mathcal{N}(T)$ since $\mathcal{R}(T) \subseteq \mathcal{N}(T)$. Hence $T(T(\vec{v})) = T^2(\vec{v}) = 0$ for all $\vec{v} \in \mathcal{V}$. In other words, $T^2 = 0$.
+\end{proof}
+
+
+\end{document}

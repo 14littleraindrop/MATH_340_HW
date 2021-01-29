@@ -153,6 +153,16 @@ Prove there is no linear transformation $T: \mathbb{R}^5 \to \mathbb{R}^5$ with 
 
 \begin{proof}
 $ $\newline
+Assume there is such $T$ with $\mathcal{R}(T) = \mathcal{N}(T)$. Let $\text{nullity}(T) = \text{rank}(T) = n$, then we have a theory says that
+\begin{align*}
+dim(\mathbb{R}^5) &= \text{nullity}(T) + \text{rank}(T) \\
+5 &= n + n \\
+5 &= 2n \\
+n &= 2.5
+\end{align*}
+However, we know that the dimension of a vector space must be an integer, hence $n \ne 2.5$, contradiction.
+
+So, there is no linear transformation $T: \mathbb{R}^5 \to \mathbb{R}^5$ with $\mathcal{R}(T) = \mathcal{N}(T)$.
 \end{proof}
 
 \newpage
@@ -160,12 +170,45 @@ $ \bullet$ \textbf{Problem 6}
 \medskip
 
 \begin{itshape}
-Find a linear transformation $T: \mathbb{R}^4 \to \mathbb{R}^4$ such that $R(T)=N(T)$.
+Find a linear transformation $T: \mathbb{R}^4 \to \mathbb{R}^4$ such that $\mathcal{R}(T)=\mathcal{N}(T)$.
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $\newline
+Let $T((x,y,z,t)) = (z,t,0,0)$. First show that $T $ is a linear transformation.
+
+Let $(x,y,z,t), (x',y',z',t')  \in \mathbb{R}^4$. Then,
+\begin{align*}
+T( \lambda (x,y,z,t)) & = T( (\lambda x, \lambda y, \lambda z ,\lambda t)) \\
+&=  (\lambda z, \lambda t, 0 , 0) \\
+& =  \lambda (z,t,0,0) \\
+&= \lambda T((x,y,z,t))
+\end{align*}
+\begin{align*}
+T((x,y,z,t) + (x',y',z',t')) &= T( (x+x', y+y', z+z', t+t')) \\
+&= (z+z', t+t', 0,0) \\
+&= (z,t,0,0) + (z',t',0,0) \\
+&= T((x,y,z,t)) + T((x',y',z',t'))
+\end{align*}
+Hence, $T$ is a linear transformation.
+\medskip
+
+Now show that $\mathcal{R}(T) = \mathcal{N}(T)$.
+\begin{align*}
+\mathcal{N}(T) &= \{ (x,y,z,t) \in \mathbb{R}^4 | T((x,y,z,t)) = (0,0,0,0) \} \\
+&= \{ (x,y,z,t) \in \mathbb{R}^4 | (z,t,0,0) = (0,0,0,0) \} \\
+&= \{ (x,y,z,t) \in \mathbb{R}^4 | z=t=0 \} \\
+&= \{ (x,y,0,0) | x,y \in \mathbb{R} \} \\
+&= \mathbb{R}^2 \text{ (or the xy plane)}
+\end{align*}
+\begin{align*}
+\mathcal{R}(T) &= \{ (x,y,z,t) \in \mathbb{R}^4 | (x,y,z,t) = T ((x',y',z',t')) \text{ for some } (x',y',z',t') \in \mathbb{R}^4 \} \\
+&= \{ (x,y,z,t) \in \mathbb{R}^4 | (x,y,z,t) = (z',t', 0,0) \text{ for some } z',t' \in \mathbb{R} \} \\
+&= \{ (x,y,0,0) | x,y \in \mathbb{R} \} \\
+&= \mathbb{R}^2 \text{ (or the xy plane)}
+\end{align*}
+Hence, $\mathcal{R}(T) = \mathcal{N}(T)$.
 \end{proof}
 
 \newpage
@@ -179,6 +222,17 @@ Let $\mathcal{V}$ be a vector space (not necessarily finite dimensional) and $\m
 
 \begin{proof}
 $ $\newline
+Let $\mathcal{F}$ be a family of linearly independent subset of $\mathcal{S}_2$ that contains $\mathcal{S}_1$. 
+
+That is,
+$$\mathcal{F} = \{ \mathcal{A} \subseteq \mathcal{S}_2 | \mathcal{A} \text{ independent}, \mathcal{S}_1 \subseteq \mathcal{A} \} $$
+Consider a chain in $\mathcal{F}$: $$\cdots \subseteq \mathcal{A}_1  \subseteq \mathcal{A}_2 \subseteq \mathcal{A}_3 \subseteq \cdots$$
+Consider $\cup \mathcal{A}_i =\mathcal{C}$, then clearly $\mathcal{S}_1 \subseteq \mathcal{C} \subseteq \mathcal{S}_2$ since $\mathcal{S}_1 \subseteq \mathcal{A}_i \subseteq \mathcal{S}_2$ for all $\mathcal{A}_i$. Moreover, $\mathcal{C}$ is independent since if $\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_k \in \mathcal{C}$ then there exist some $\mathcal{A}_t$ in the chain such that $\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_k \in \mathcal{A}_t$. Since $\mathcal{A}_t$ is linearly independent, the set of vectors $\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_k$ is also independent. Hence, $\mathcal{C}$ is independent. This shows $\mathcal{C} \in \mathcal{F}$ and it contains every set in the chains. The maximal principle then says $\mathcal{F}$ contains a maximal element $\mathcal{T}$. Notice that $\mathcal{S}_1 \subseteq \mathcal{T} \subseteq \mathcal{S}_2$ and $\mathcal{T}$ is independent.
+
+I claim that $\mathcal{T}$ generates $\mathcal{S}_2$.
+Suppose $Span(\mathcal{T}) \ne \mathcal{S}_2$, then there exists $\vec{v} \in \mathcal{S}_2$ with $\vec{v} \notin Span(\mathcal{T})$. So, $\mathcal{T} \cup \{ \vec{v} \} $ is linearly independent and clearly that $\mathcal{S}_1 \subseteq \mathcal{T} \cup \{ \vec{v} \} \subseteq \mathcal{S}_2$, this implies $\mathcal{T} \cup \{ \vec{v} \} \in \mathcal{F}$. However, this contradicts that $\mathcal{T}$ is a maximal element of $\mathcal{F}$. 
+
+So, since $\mathcal{T}$ generates $\mathcal{S}_2$ and $\mathcal{S}_2$ spans $\mathcal{V}$, $\mathcal{T}$ generates $\mathcal{V}$. Moreover, since $\mathcal{T}$ is independent, it is a basis for $\mathcal{V}$. Thus, we have found our basis which is sandwiched between $\mathcal{S}_1$ and $\mathcal{S}_2$.
 \end{proof}
 
 \end{document}
