@@ -29,6 +29,31 @@ Find a basis for $\mathcal{L}(\mathbb{R}^2, \mathbb{R}^3)$, the space of all lin
 
 \begin{proof}
 $ $\newline
+I claim that 
+\begin{align*}
+T_1(x,y) &= (x,0,0), \quad T_2(x,y) = (y,0,0) \\
+T_3(x,y) &= (0,x,0), \quad T_4(x,y) = (0,y,0)\\
+T_5(x,y) &= (0,0,x),  \quad T_6(x,y) = (0,0,y) 
+\end{align*}
+forms a basis for $\mathcal{L}(\mathbb{R}^2, \mathbb{R}^3)$.
+
+In class, we have shown that $\mathcal{L}(\mathbb{R}^2, \mathbb{R}^3) \approx M_{3 \times 2}$ and the isomorphism between them is $\phi (T) = T_{B_1}^{B_2} $. (Here we take $B_1 = \{ (1,0), (0,1) \}$ be basis for $\mathbb{R}^2$ and $B_2 \{ (1,0,0), (0,1,0), (0,0,1) \}$ be basis for $\mathbb{R}^3$.) Clearly, if $\phi$ is an isomorphism, then $\phi ^{-1}$ is also an isomorphism from $M_{3 \times 2}$ to $\mathcal{L}(\mathbb{R}^2, \mathbb{R}^3)$, since $\phi$ being invertible means $\phi^{-1}$ is a linear transformation and $\phi^{-1}$ trivially is invertible linear transformation.
+
+Consider the matrices below
+\begin{align*}
+M_1 &= \begin{pmatrix} 1 & 0 \\ 0&0 \\0&0 \end{pmatrix}, \quad M_2 = \begin{pmatrix} 0 & 1 \\ 0&0 \\0&0 \end{pmatrix} \\
+M_3 &= \begin{pmatrix} 0 & 0 \\ 1&0 \\0&0 \end{pmatrix}, \quad M_4 = \begin{pmatrix} 0 & 0 \\ 0&1 \\0&0 \end{pmatrix} \\
+M_5 &= \begin{pmatrix} 0 & 0 \\ 0&0 \\1&0 \end{pmatrix}, \quad M_6 = \begin{pmatrix} 0 & 0 \\ 0&0 \\0&1 \end{pmatrix}
+\end{align*}
+Notice that these matrices form a basis for $M_{3 \times 2}$.
+
+Applying $\phi^{-1}$ to these matrices we get
+\begin{align*}
+\phi^{-1}(M_1) &= T_1, \quad \phi^{-1}(M_2) = T_2 \\
+\phi^{-1}(M_3) &= T_3, \quad \phi^{-1}(M_4) = T_4 \\
+\phi^{-1}(M_5) &= T_5, \quad \phi^{-1}(M_6) = T_6
+\end{align*}
+Since isomorphism maps basis to basis, the $T_i$'s we have above is indeed a basis for $\mathcal{L}(\mathbb{R}^2, \mathbb{R}^3)$.
 \end{proof}
 
 \newpage
@@ -38,7 +63,7 @@ $ \bullet$ \textbf{Problem 2}
 \begin{itshape}
 Let $\mathcal{V}$ and $\mathcal{W}$ be two vector spaces. Recall $\mathcal{L}(\mathcal{V}, \mathcal{W})$ is the set containing all linear transformations from $\mathcal{V}$ to $\mathcal{W}$. 
 
-Let $\vec{v} \ne \vec{0}$ $\vec{v} \in \mathcal{V}$, and $S=\{ +: \mathcal{V} \to \mathcal{W} \; | \; +(\vec{v}) = 0 \}$.
+Let $\vec{v} \ne \vec{0}$, $\vec{v} \in \mathcal{V}$, and $S=\{ \phi: \mathcal{V} \to \mathcal{W} \; | \; \phi(\vec{v}) = \vec{0} \}$.
 
 Prove that $\mathcal{S}$ is a subsapce of $\mathcal{L}(\mathcal{V}, \mathcal{W})$. If $dim (\mathcal{V}) =n$ and $dim(\mathcal{W})=m$, what is $dim(\mathcal{S})$?
 \end{itshape}
@@ -46,6 +71,32 @@ Prove that $\mathcal{S}$ is a subsapce of $\mathcal{L}(\mathcal{V}, \mathcal{W})
 
 \begin{proof}
 $ $\newline
+First show $\mathcal{S} \le \mathcal{L}(\mathcal{V}, \mathcal{W})$.
+
+1) The zero transformation is in $\mathcal{S}$ since it maps all vectors in $\mathcal{V}$ to zero, including $\vec{v}$.
+
+2) Let $\phi_1, \phi_2 \in \mathcal{S}$, then $\phi_1(\vec{v}) = \vec{0}$ and $\phi_2(\vec{v}) = \vec{0}$. So, $$(\phi_1+\phi_2) (\vec{v}) = \phi_1(\vec{v}) + \phi_2(\vec{v}) = \vec{0} + \vec{0} = \vec{0}$$ Hence, $\phi_1 +\phi_2 \in \mathcal{S}$.
+
+3) Let $\lambda \in \mathcal{F}$, then $(\lambda \phi_1 )(\vec{v}) = \lambda \phi_1(\vec{v}) = \lambda \cdot \vec{0} =\vec{0}$. Hence $\lambda \phi_1 \in \mathcal{S}$.
+\bigskip
+
+Let $dim(\mathcal{V}) = n$, $dim(\mathcal{W}) = m$ and $[\vec{v}]_{B_1} = (v_1, \cdots, v_n)$ where $B_1$ is a basis for $\mathcal{V}$ and $B_2$ is a basis for $\mathcal{W}$. Consider the matrix form of a linear transformation in $\mathcal{L}(\mathcal{V}, \mathcal{W})$ and multiply by the vector $\vec{v}$
+\begin{align*}
+& \begin{pmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{m1} & \cdots & a_{mn} \end{pmatrix} \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix} \\
+=& \begin{pmatrix} a_{11} \\ \vdots \\ a_{m1} \end{pmatrix} v_1 + \cdots + \begin{pmatrix} a_{1n} \\ \vdots \\ a_{mn} \end{pmatrix} v_n
+\end{align*}
+Since $\vec{v} \ne \vec{0}$, we can find a nonempty index set $I$ such that in contains all the index where $v_i \ne 0$ (i.e. $I \subseteq \{1, 2, \cdots ,n \}$).
+\begin{align*}
+&\begin{pmatrix} a_{11} \\ \vdots \\ a_{m1} \end{pmatrix} v_1 + \cdots + \begin{pmatrix} a_{1n} \\ \vdots \\ a_{mn} \end{pmatrix} v_n \\
+=  &\sum_{i \in I} \begin{pmatrix} a_{1i} \\ \vdots \\ a_{mi} \end{pmatrix} v_i
+\end{align*}
+If the matrix is in $\mathcal{S}$ then this sum equal to zero. Since $I \ne \emptyset $ pick $i_0 \in I$ and rearrange we will have
+\begin{align*}
+ \begin{pmatrix} a_{1{i_0}} \\ \vdots \\ a_{m{i_0}} \end{pmatrix} v_{i_0} &= -\sum_{i \in I, i \ne i_0} \begin{pmatrix} a_{1i} \\ \vdots \\ a_{mi} \end{pmatrix} v_i \\
+  \begin{pmatrix} a_{1{i_0}} \\ \vdots \\ a_{m{i_0}} \end{pmatrix}  &= -\frac{1}{v_{i_0}}\sum_{i \in I, i \ne i_0} \begin{pmatrix} a_{1i} \\ \vdots \\ a_{mi} \end{pmatrix} v_i 
+ \end{align*}
+This shows that we have one particular column in the matrix which is always linear dependent to other columns in the matrix for all matrices in $\mathcal{S}$. In other words, the dimension of $\mathcal{S}$ is $m$ less than the dimension of $M_{m\times n}$, that is, $dim(\mathcal{S}) = nm - m = (n-1)m$. A basis for $\mathcal{S}$ will be $$ \{ M \in M_{m \times n}    \; | \; a_{j(i \ne i_0)} =1, a_{j{i_0}} = -\frac{v_i}{v_{i_0}} , \text{all other terms zero} \} $$
+where $j$ range from $0$ to $m$ and $i$ range from $0$ to $n$ skipping $i_0$. Indeed there are $(n-1)m$ terms.
 \end{proof}
 
 \newpage
@@ -59,6 +110,10 @@ Is $T: M_{2 \times 2}(\mathbb{R}) \to \mathcal{P}_2(\mathbb{R})$ defined by $$T(
 
 \begin{proof}
 $ $\newline
+I will show that $T$ is not invertible by showing it is not bijective, namely, not injective.
+
+Consider matrices $M_1=\begin{pmatrix} 1 & 1 \\ 2 & 2 \end{pmatrix}$ and $M_2=\begin{pmatrix} 1 & 1 \\ 3 & 1 \end{pmatrix}$. The we have $$T(M_1) = T(\begin{pmatrix} 1 & 1 \\ 2 & 2 \end{pmatrix}) = 1+2x+4x^2$$ $$T(M_2) = T(\begin{pmatrix} 1 & 1 \\ 3 & 1 \end{pmatrix}) = 1+2x+4x^2$$
+This shows $T$ is not injective so not invertible.
 \end{proof}
 
 \newpage
@@ -66,12 +121,47 @@ $ \bullet$ \textbf{Problem 4}
 \medskip
 
 \begin{itshape}
-Is $T: M_{2 \times 2} \to M_{2 \times 2}$ defined by $$T(\begin{pmatrix} a & b \\ c & d \end{pmatrix}) = \begin{pmatrix} a+b & a \\ c & c+d \end{pmatrix}$$ invertible? If so find its inverse $T_{-1}$.
+Is $T: M_{2 \times 2} \to M_{2 \times 2}$ defined by $$T(\begin{pmatrix} a & b \\ c & d \end{pmatrix}) = \begin{pmatrix} a+b & a \\ c & c+d \end{pmatrix}$$ invertible? If so find its inverse $T^{-1}$.
 \end{itshape}
 \medskip
 
 \begin{proof}
 $ $\newline
+Claim: $T$ is invertible.
+
+Let $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in M_{2 \times 2}$. Consider $\begin{pmatrix} b & a-b \\ c & d-c \end{pmatrix} \in M_{2 \times 2}$, then $$T(\begin{pmatrix} b & a-b \\ c & d-c \end{pmatrix}) = \begin{pmatrix} (b+a-b) & b \\ c & c+d-c \end{pmatrix} = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$ Hence, $T$ is surjective.
+
+Now let
+\begin{align*}
+T(\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}) &=T( \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}) \\
+\begin{pmatrix} a_{11}+a_{12} & a_{11} \\ a_{21} & a_{21} + a_{22} \end{pmatrix} &= \begin{pmatrix} b_{11}+b_{12} & b_{11} \\ b_{21} & b_{21} + b_{22} \end{pmatrix}
+\end{align*}
+
+This gives the system of equation
+\begin{align*}
+& \begin{cases} a_{11}+a_{12} = b_{11}+b_{12} \\ a_{11} = b_{11} \\ a_{21} = b_{21} \\ a_{21}+a_{22} = b_{21}+b_{22} \end{cases} \\
+\Rightarrow & \begin{cases} a_{11}+a_{12} = a_{11}+b_{12} \\ a_{11} = b_{11} \\ a_{21} = b_{21} \\ a_{21}+a_{22} = a_{21}+b_{22} \end{cases} \\
+\Rightarrow & \begin{cases} a_{12} = b_{12} \\ a_{11} = b_{11} \\ a_{21} = b_{21} \\ a_{22} = b_{22} \end{cases}
+\end{align*}
+Hence $\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}$, so $T$ is injective.
+
+Since $T$ is bijective, it is invertible.
+\bigskip
+
+Claim: $T^{-1}(\begin{pmatrix} a & b \\ c&d \end{pmatrix}) = \begin{pmatrix} b & a-b \\ c & d-c \end{pmatrix}$.
+\begin{align*}
+(T \circ T^{-1})(\begin{pmatrix} a & b \\ c&d \end{pmatrix}) &= T(T^{-1}(\begin{pmatrix} a & b \\ c&d \end{pmatrix})) \\
+&= T(\begin{pmatrix} b & a-b \\ c & d-c \end{pmatrix}) \\
+&= \begin{pmatrix} (b+a-b) & b \\ c & c+d-c \end{pmatrix} \\
+&= \begin{pmatrix} a & b \\ c&d \end{pmatrix}
+\end{align*}
+\begin{align*}
+(T^{-1} \circ T)(\begin{pmatrix} a & b \\ c&d \end{pmatrix}) &= T^{-1}(T(\begin{pmatrix} a & b \\ c&d \end{pmatrix})) \\
+&= T^{-1}(\begin{pmatrix} a+b & a \\ c & c+d \end{pmatrix}) \\
+&= \begin{pmatrix} a & (a+b-a) \\ c & (c+d -c) \end{pmatrix} \\
+&= \begin{pmatrix} a & b \\ c&d \end{pmatrix}
+\end{align*}
+This shows that $T^{-1}$ defined above is indeed the inverse of $T$.
 \end{proof}
 
 \newpage
@@ -85,6 +175,24 @@ Find the equation (in the xy plane) of the curve get by rotating the parabola $y
 
 \begin{proof}
 $ $\newline
+Let the rotated coordinates system be $x'y'$. A basis for this coordinates is $B=\{ (\frac{\sqrt{3}}{2}, \frac{1}{2}), (-\frac{1}{2}, \frac{\sqrt{3}}{2}) \}$. So we can then find the change of basis matrix
+\begin{align*}
+I_{E}^{B} &= \begin{pmatrix} [(1,0)]_B & [(0,1)]_B \end{pmatrix} \\
+&= \begin{pmatrix} \frac{\sqrt{3}}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{\sqrt{3}}{2} \end{pmatrix}
+\end{align*}
+Then
+\begin{align*}
+(x',y') &= I_E^B \begin{pmatrix} x \\ y \end{pmatrix} \\
+&= \begin{pmatrix} \frac{\sqrt{3}}{2} & \frac{1}{2} \\ -\frac{1}{2} & \frac{\sqrt{3}}{2} \end{pmatrix}  \begin{pmatrix} x \\ y \end{pmatrix} \\
+&= \frac{1}{2} \begin{pmatrix} \sqrt{3} x + y & -x + \sqrt{3}y \end{pmatrix}
+\end{align*}
+In the $x'y'$ coordinate system, the equation of the parabola is $y'=x'^2$, substitute in the above expression we get
+\begin{align*}
+y' &= x'^2 \\
+-\frac{1}{2}x+\frac{\sqrt{3}}{2}y &= (\frac{\sqrt{3}}{2}x+\frac{1}{2}y)^2 \\
+-\frac{1}{2}x+\frac{\sqrt{3}}{2}y &= \frac{3}{4}x^2 + \frac{\sqrt{3}}{2}xy +\frac{1}{4}y^2
+\end{align*}
+So the tilted parabola has an equation $$0=\frac{3}{4}x^2 +\frac{1}{4}y^2 +\frac{\sqrt{3}}{2}xy +\frac{1}{2}x - \frac{\sqrt{3}}{2}y$$.
 \end{proof}
 
 \newpage
@@ -98,6 +206,35 @@ Give an example of a linear transformation $T: \mathcal{V} \to \mathcal{V}$ that
 
 \begin{proof}
 $ $\newline
+Consider the case where $\mathcal{V} = \mathbb{R}^\infty$. Take $T(x_1, x_2, \cdots) = (0, x_1, x_2, \cdots)$. 
+\medskip
+
+Fist show that $T$ is a linear transformation.
+Let $\{x_n\}, \{y_n \} \in \mathbb{R}^\infty$, $\lambda \in \mathbb{R}$. Then
+\begin{align*}
+T(\{x_n\} + \{y_n \} ) &= T( \{x_n +y_n \}) \\
+&= (0, x_1+y_1, x_2+y_2, \cdots) \\
+&= (0, x_1, x_2, \cdots) + (0, y_1, y_2, \cdots) \\
+&= T(\{x_n\}) + T(\{y_n \})
+\end{align*}
+\begin{align*}
+T(\lambda\{x_n\}) &= T(\lambda x_1, \lambda x_2, \cdots) \\
+&= (0, \lambda x_1, \lambda x_2, \cdots) \\
+&= \lambda (0, x_1, x_2, \cdots) \\
+&= \lambda T(\{x_n\})
+\end{align*}
+So $T$ is a linear transformation.
+\medskip
+
+$T$ is injective since 
+\begin{align*}
+T(x_1, x_2, \cdots) &= T(y_1, y_2, \cdots) \\
+(0, x_1, x_2, \cdots) &= (0, y_1, y_2, \cdots) 
+\end{align*}
+This implies $x_n= y_n$ for all $n$, that is, $(x_1, x_2, \cdots) = (y_1, y_2, \cdots)$.
+\medskip
+
+$T$ is not surjective since the first element of all sequence in the range is $0$, so the constant sequence $1$ is not in the range. Since $T$ is not bijective, it is not invertible.
 \end{proof}
 
 \newpage
@@ -111,6 +248,28 @@ Given an example of a linear transformation $T: \mathcal{V} \to \mathcal{V}$ tha
 
 \begin{proof}
 $ $\newline
+Consider again the case when $\mathcal{V} = \mathbb{R}^\infty$. Take $T(x_1, x_2, x_3, \cdots) = (x_2, x_3, \cdots)$.
+\medskip
+
+$T$ is a linear transformation since if we let $\{x_n\}, \{y_n \} \in \mathcal{R}^\infty$, $\lambda \in \mathbb{R}$, then
+\begin{align*}
+T(\{x_n\} + \{y_n\}) &= T( \{x_n +y_n \}) \\
+&= (x_2+y_2, x_3+y_3, \cdots) \\
+&= (x_2, x_3, \cdots) +(y_2, y_3, \cdots) \\
+&= T(\{x_n\}) + T(\{y_n\})
+\end{align*}
+\begin{align*}
+T(\lambda\{x_n\}) &= T(\lambda x_1, \lambda x_2, \cdots) \\
+&= (\lambda x_2, \lambda x_3, \cdots) \\
+&= \lambda (x_2, x_3, \cdots) \\
+&= \lambda T(\{x_n\})
+\end{align*}
+This $T$ is a linear transformation.
+\medskip
+
+$T$ is surjective since for any $(x_1, x_2, \cdots ) \in \mathbb{R}^\infty$ take $(0, x_1, x_2, \cdots ) \in \mathbb{R}^\infty$ then $T(0, x_1, x_2, \cdots) = (x_1, x_2, \cdots )$. 
+
+However, $T$ is not injective since $(0, x_1, x_2, \cdots)$ and $(1, x_1, x_2, \cdots)$ would both give $(x_1, x_2, \cdots )$ after the mapping. Hence, $T$ is not bijective, so not invertible.
 \end{proof}
 
 \newpage
@@ -120,5 +279,19 @@ $ \bullet$ \textbf{Problem 8}
 \begin{itshape}
 $\mathcal{B}_1 = \{ 1, x ,x^2 \}$ and $\mathcal{B}_2 = \{ 2x^2-x, 3x^2+1, x^2 \}$ are two bases for $\mathcal{P}_2(\mathbb{R})$. Find the matrices $I_{\mathcal{B}_1}^{\mathcal{B}_2}$, of change of basis from $\mathcal{B}_1$ to $\mathcal{B}_2$ and $I_{\mathcal{B}_2}^{\mathcal{B}_1}$ of change of basis from $\mathcal{B}_2$ to $\mathcal{B}_1$.
 \end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\begin{align*}
+I_{B_2}^{B_1} &= \begin{pmatrix} [2x^2-x]_{B_1} & [3x^2+1]_{B_1} & [x^2]_{B_1} \end{pmatrix} \\
+&= \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 2& 3&1 \end{pmatrix}
+\end{align*}
+\begin{align*}
+I_{B_1}^{B_2} &= (I_{B_2}^{B_1})^{-1} \\
+&= \begin{pmatrix} 0 & 1 & 0 \\ -1 & 0 & 0 \\ 2& 3&1 \end{pmatrix} ^{-1}\\
+&= \begin{pmatrix} 0 & -1 & 0 \\ 1 & 0 & 0\\ -3 & 2 &1 \end{pmatrix}
+\end{align*}
+\end{proof} 
 
 \end{document}
