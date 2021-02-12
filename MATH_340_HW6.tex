@@ -1,0 +1,117 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{WINTER 2021 --- MATH 340 HW6}
+\rhead{Helen (Yeu) Chen}
+\setlength{\parindent}{0cm}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{systeme}
+
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+$ \bullet$ \textbf{Problem 1}
+\medskip
+
+\begin{itshape}
+Prove that if $M$ is an $n \times n$ matrix and can be written in the form $M = \begin{pmatrix} A & B \\ 0 & C \end{pmatrix}$ where $A$ and $C$ are square matrices, then $det(M)=det(A) \cdot det(C)$.
+
+You can use the column expansion formula for the determinant, even though we did not prove in the video it is equivalent to the raw expansion formula. It follows form problem 3.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Let $A= \begin{pmatrix} a_{11} & \cdots & a_{1k} \\ \vdots & \ddots & \vdots \\ a_{k1} & \cdots & a_{kk} \end{pmatrix}$ and $C =\begin{pmatrix} c_{11} & \cdots & c_{1l} \\ \vdots & \ddots & \vdots \\ c_{l1} & \cdots & c_{ll} \end{pmatrix}$, then $$M = \begin{pmatrix} a_{11} & \cdots & a_{1k}   \\ \vdots & \ddots & \vdots & &B&\\ a_{k1} & \cdots & a_{kk} \\ 0 & \cdots & 0 & c_{11} & \cdots & c_{1l}  \\ \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\ 0 & \cdots & 0 &  c_{l1} & \cdots & c_{ll}  \end{pmatrix}$$
+ 
+If $A$ is singular, then the columns of $A$ are dependent and $det(A) = 0$. Since $A$ has dependent columns, $M$ must also have dependent columns, hence it is singular and $det(M)=0$. This gives $det(M)=det(A) \cdot det(C) = 0$
+\medskip
+
+|f $A$ is not singular, we can find $A^{-1}$ and write $$\begin{pmatrix} A & B \\ 0 & C \end{pmatrix} = \begin{pmatrix} A & 0 \\ 0& I_l \end{pmatrix} \begin{pmatrix} I_k & A^{-1}B \\ 0 & C \end{pmatrix}$$ 
+For the first matrix
+$$
+\begin{vmatrix} A & 0 \\ 0& I_l \end{vmatrix} = \begin{vmatrix}  a_{11} & \cdots & a_{1k} \\ \vdots & \ddots & \vdots && 0 \\ a_{k1} & \cdots & a_{kk} \\& & & 1 \\ &0 & & & \ddots \\ & & & && 1\end{vmatrix} = det(A)
+$$(always do row expansion on the row with one 1 and all other entry 0, string from the bottom row and work upwards)
+
+And the second matrix gives 
+$$
+\begin{vmatrix} I_k & A^{-1}B \\ 0 & C \end{vmatrix} = \begin{vmatrix} 1 & \cdots & 0 \\ \vdots & \ddots & \vdots & &A^{-1}B\\ 0 & \cdots & 1   \\ & & & c_{11} & \cdots & c_{1l} \\ &0&& \vdots & \ddots & \vdots \\ &&& c_{l1} & \cdots & c_{ll} \end{vmatrix} = det(C)
+$$ (do column expansion on columns with one 1 and all other terms 0, working from left most column towards right)
+Thus we have 
+$$det\begin{pmatrix} A & B \\ 0 & C \end{pmatrix} = det\begin{pmatrix} A & 0 \\ 0& I_l \end{pmatrix} \cdot det\begin{pmatrix} I_k & A^{-1}B \\ 0 & C \end{pmatrix} = det(A) \cdot det(C)$$ 
+
+ \end{proof}
+\newpage
+
+$ \bullet$ \textbf{Problem 2}
+\medskip
+
+\begin{itshape}
+Prove that if $M$ is an $n \times n$ matrix and can be written in the form $M= \begin{pmatrix} A & B \\ C & D \end{pmatrix}$ where $A,B,C,D$ are square matrices, then it is not necessarily true that $det(M) = det(A) \; det(D) - det(B) \; det(C)$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Consider $\begin{pmatrix} 1 & 2& 3&4 \\ 5&6&7&8 \\9&10&11&12\\ 13&14&15&16 \end{pmatrix}$, then
+\begin{align*}
+&\begin{vmatrix} 1 & 2& 3&4 \\ 5&6&7&8& \\9&10&11&12\\ 13&14&15&16 \end{vmatrix} \\
+=& \begin{vmatrix} 6&7&8 \\ 10&11&12 \\14&15&16 \end{vmatrix} + 2\begin{vmatrix}5&7&8\\ 9&11&12 \\13&15&16\end{vmatrix} + 3\begin{vmatrix} 5&6&8\\9&10&12\\13&14&16\end{vmatrix} + 4\begin{vmatrix} 5&6&7\\9&10&11\\13&14&15\end{vmatrix} \\
+=& 0
+\end{align*}
+But
+$$\begin{vmatrix} 1&2\\5&6\end{vmatrix} = -1, \begin{vmatrix} 3 & 4 \\ 7&8 \end{vmatrix} = -4, \begin{vmatrix} 9&10 \\ 13&14\end{vmatrix} = -4, \begin{vmatrix} 11&12 \\ 15&16 \end{vmatrix} = -4$$
+So
+$$\begin{vmatrix} 1&2\\5&6\end{vmatrix} \cdot \begin{vmatrix} 11&12 \\ 15&16 \end{vmatrix} - \begin{vmatrix} 3 & 4 \\ 7&8 \end{vmatrix} \cdot \begin{vmatrix} 9&10 \\ 13&14\end{vmatrix} = 4-16 = -12 \ne 0
+$$
+\end{proof}
+\newpage
+
+$ \bullet$ \textbf{Problem 3}
+\medskip
+
+\begin{itshape}
+Prove that for any $n \times m$ matrix $M$, $det(M) = det(M^t)$. Do not use column expansion formula for the determinant, since we did not prove it in the videos.
+\smallskip
+
+(Hint: if $M$ is invertible then you can transform $I$ into $M$ by performing a series of elementary operations)
+\smallskip
+
+You can use some facts from 308: $M$ is invertible iff $M^t$ is and $(A \cdot B)^t = B^t \cdot A^t$
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+If $M$ in singular, then $M^t$ is singular too. Hence $det(M) = det(M^t) = 0$.
+\smallskip
+
+If $M$ is invertible, then we can write $M = E_1 \cdots E_nI$ where $E_i$ are elementary matrices. First we will show that $det(E) = det(E^t)$. 
+
+$\rightarrow$ $E= \begin{pmatrix} e_1 \\ \vdots \\ e_j \\ \vdots \\ e_i \\ \vdots \\e_n \end{pmatrix}$ (swapping rows), then $E^t = \begin{pmatrix} e_1 \\ \vdots \\ e_j \\ \vdots \\ e_i \\ \vdots \\e_n \end{pmatrix}$ hence $det(E) = det(E^t)$.
+
+$\rightarrow$ $E= \begin{pmatrix} e_1  \\ \vdots \\ ke_i \\ \vdots \\e_n \end{pmatrix}$ (multiplying rows by $k$), then $E^t = \begin{pmatrix} e_1  \\ \vdots \\ ke_i \\ \vdots \\e_n \end{pmatrix}$, hence $det(E) = det(E^t)$.
+
+$\rightarrow$ $E= \begin{pmatrix} e_1  \\ \vdots \\ e_{i-1} \\ e_i + ke_j \\ \vdots \\e_n \end{pmatrix}$ (adding rows), then $E^t = \begin{pmatrix} e_1  \\ \vdots \\ e_{j-1} \\ ke_i + e_j \\ \vdots \\e_n \end{pmatrix}$, hence $det(E) = det(I) = det(E^t)$
+
+So putting everything together we have
+\begin{align*}
+det(M^t) &= det((E_1\cdots E_n)^t) \\
+&= det(E_n^t \cdots E_1^t) \\
+&= det(E_n^t) \cdots det(E_1^t) \\
+&= det(E_n) \cdots det(E_1) \\
+&= det(E_1) \cdots det(E_n)\\
+&= det(E_1 \cdots E_n) \\
+&=det(M)
+\end{align*}
+\end{proof}
+\end{document}
