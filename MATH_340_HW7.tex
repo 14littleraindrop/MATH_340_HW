@@ -1,0 +1,328 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{WINTER 2021 --- MATH 340 HW7}
+\rhead{Helen (Yeu) Chen}
+\setlength{\parindent}{0cm}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{systeme}
+
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+$ \bullet$ \textbf{Problem 1}
+\medskip
+
+\begin{itshape}
+Let $T: \mathcal{V} \to \mathcal{V}$. Prove the following:
+
+a) If $\mathcal{V}$ is finite dimensional, then $T$ is invertible iff 0 is not an eigenvalue of $T$.
+\medskip
+
+b) Suppose $T$ is invertible. Then $\lambda$ is an eigenvalue of $T$ iff $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$ and $E_{\lambda}(T) = E_{\lambda^{-1}}(T^{-1})$.
+\medskip
+
+c) If $\lambda$ is an eigenvalue for $T$ with eigenvector $\vec{v}$, then $\lambda^m$ is eigenvalue for $T^m$ with eigenvector $\vec{v}$ and $E_\lambda(T) \subseteq E_{\lambda^m}(T^m)$.
+\medskip
+
+d) Give an example of $T: \mathcal{V} \to \mathcal{V}$ such that $\lambda$ is eigenvalue for $T^m$ but $\sqrt[m]{\lambda}$ is not an eigenvalue for $T$.
+\medskip
+
+e) Given an example of $T: \mathcal{V} \to \mathcal{V}$ such that $\lambda$ is an eigenvalue for $T$ and $E_\lambda(T) \ne E_{\lambda^m}(T^m)$.
+\medskip
+
+f) Find $T: \mathcal{V} \to \mathcal{V}$ that does not have 0 as eigenvalue but is not invertible. 
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+\textbf{a)} T invertible iff 0 is not an eigenvalue.
+\smallskip
+
+Recall, if $\mathcal{V}$ is finite dimensional, then $T: \mathcal{V} \to \mathcal{W}$ is invertible iff $dim \; \mathcal{R}(T) = dim \; \mathcal{V} = dim \; \mathcal{W}$.
+\smallskip
+
+"$\Rightarrow$": Prove by contradiction. Assume 0 is an eigenvalue, then there exist at least one $\vec{v} \in \mathcal{V}$ such that $T(\vec{v}) = 0 \cdot \vec{v} = \vec{0}$. Hence, $\vec{v} \in \mathcal{N}(T)$ and $\mathcal{N}(T) \ne \{ \vec{0} \}$, implying that $T$ is not injective. Since $T$ is not bijective, it can not be invertible, contradicts.
+\smallskip
+
+"$\Leftarrow$": Since $\mathcal{V}$ is finite dimensional, let $dim \; \mathcal{V} = n$. Prove the contrapositive, i.e, if $T$ is not invertible then 0 is an eigenvalue for $T$. Since $T$ is not invertible, $dim \; \mathcal{R}(T) \ne dim \; \mathcal{V} = n$. Since $\mathcal{R}(T) \subseteq \mathcal{V}$, $dim \; \mathcal{R}(T) < n$. Recall that the sum of the dimension of the range and the dimension of the null space must equal to the dimension of the domain, so $dim \; \mathcal{R}(T) < n$ implies $dim \; \mathcal{N}(T) >0$. Hence $\mathcal{N}(T) \ne \{ \vec{0} \}$ and we can find at least one vector $\vec{v} \in \mathcal{N}(T)$ where $\vec{v} \ne \vec{0}$. By the definition of the null space, $T(\vec{v}) = \vec{0} = 0 \cdot \vec{v}$, this shows that $\vec{v}$ is an eigenvector corresponding to eigenvalue 0. So 0 is an eigenvalue for $T$ as we wish.
+\bigskip
+
+\textbf{b)} $T$ invertible. $\lambda$ an eigenvalue of $T$ iff $\frac{1}{\lambda}$ an eigenvalue of $T^{-1}$ and $E_{\lambda}(T) = E_{\lambda^{-1}}(T^{-1})$.
+\smallskip
+
+"$\Rightarrow$": Let $\lambda$ be an eigenvalue of $T$ and $\vec{v} \ne \vec{0}$ be the corresponding eigenvector. Since $T$ is invertible, by part a) we know that $\lambda \ne 0$. Also recall that $T^{-1}$ is also a linear transformation. With all the information, we have
+\begin{align*}
+T(\vec{v}) =& \lambda \vec{v} \\
+T^{-1}(T(\vec{v})) =& T^{-1}(\lambda \vec{v}) \\
+\vec{v} =& \lambda T^{-1}(\vec{v}) \\
+T^{-1}(\vec{v}) =& \frac{1}{\lambda} \vec{v}
+\end{align*}
+This shows that $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$ with the same eigenvector $\vec{v}$.
+\smallskip
+
+"$\Leftarrow$": Let $\frac{1}{\lambda}$ be an eigenvalue of $T^{-1}$ and $\vec{v} \ne \vec{0}$ be the corresponding eigenvector. By the similar reasoning as above, $T^{-1}$ is invertible so $\frac{1}{\lambda} \ne 0$. Then we have,
+\begin{align*}
+T^{-1}(\vec{v}) =& \frac{1}{\lambda} \vec{v} \\
+T(T^{-1}(\vec{v})) =& T(\frac{1}{\lambda} \vec{v}) \\
+\vec{v} =& \frac{1}{\lambda} T(\vec{v}) \\
+T(\vec{v}) =& \frac{1}{1/\lambda} \vec{v} \\
+T(\vec{v}) =& \lambda \vec{v}
+\end{align*}
+Hence, $\lambda$ is an eigenvalue of $T$ with the same eigenvector $\vec{v}$. And since we have seen that $\vec{v}$ is an eigenvector of $T$ with eigenvalue $\lambda$ if and only if it is also an eigenvector of $T^{-1}$ with eigenvalue $\lambda^{-1}$, $E_\lambda (T) = E_{\lambda^{-1}}(T^{-1})$.
+\bigskip
+
+\textbf{c)} $\lambda$ an eigenvalue of $T$ with eigenvector $\vec{v}$ $\Rightarrow$ $\lambda^m$ an eigenvalue of $T^m$ with eigenvector $\vec{v}$. $E_\lambda(T) \subseteq E_{\lambda^m}(T^m)$.
+\smallskip
+
+Let $\lambda$ be an eigenvalue of $T$ with eigenvector $\vec{v}$, then $T(\vec{v}) = \lambda \vec{v}$ (base case). Using induction, assume that $\lambda^{m-1}$ is an eigenvalue of $T^{m-1}$ with eigenvector $\vec{v}$, then 
+\begin{align*}
+T^{m-1}(\vec{v}) =& \lambda^{m-1} \vec{v} \\
+T(T^{m-1}(\vec{v})) =& T(\lambda^{m-1} \vec{v}) \\
+T^m(\vec{v}) =& \lambda^{m-1}T(\vec{v}) \\
+=& \lambda^{m-1} ( \lambda \vec{v}) \\
+=& \lambda^m \vec{v}
+\end{align*}
+Hence $\lambda^m$ is an eigenvalue of $T^m$ with eigenvector $\vec{v}$. This holds true for all $m$.
+\smallskip
+
+Let $\vec{w} \in E_\lambda(T)$, then $T(\vec{w}) = \lambda \vec{w}$ (i.e. $\vec{w}$ is either an eigenvector corresponding to $\lambda$ or the zero vector). If $\vec{w} = \vec{0}$ then it is trivial that $\vec{w} \in E_{\lambda^m}(T^m)$ since the zero vector is in all eigenspaces of any linear transformation. If $\vec{w}$ is an eigenvector of $T$, then we just proved that it is also an eigenvector of $T^m$ with eigenvalue $\lambda^m$, hence $\vec{w} \in E_{\lambda^m}(T^m)$. Thus $E_\lambda(T) \subseteq E_{\lambda^m}(T^m)$.
+\bigskip
+
+\textbf{d)} Example of $T: \mathcal{V} \to \mathcal{V}$ s.t $\lambda$ an eigenvalue for $T^m$ but $\sqrt[m]{\lambda}$ not an eigenvalue for $T$
+\smallskip
+
+Consider $-I = \begin{pmatrix} -1 & 0 \\ 0& -1 \end{pmatrix}$ which has eigenvalue $-1$. However, $(-I)^2 = I$ has eigenvalue 1 and $\sqrt{1} = \pm 1$, where 1 is not an eigenvalue of $-I$.
+\bigskip
+
+\textbf{e)} Example of $T: \mathcal{V} \to \mathcal{V}$ s.t $\lambda$ an eigenvalue for $T$ and $E_\lambda(T) \ne E_{\lambda^m}(T^m)$.
+\smallskip
+
+Consider the transformation in $\mathbb{R}^2$ which reflects vector about the line $x=y$, i.e $T = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$. The characteristic equation of $T$ is $(-\lambda)^2 -1= \lambda^2 -1$ which gives eigenvalue $\lambda = \pm 1$. Consider especially $\lambda = 1$, solving for the eigenvector
+$$(\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} - I) \begin{pmatrix} x \\y \end{pmatrix} = \begin{pmatrix} -1 &1 \\ 1 & -1 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} -x+y \\ x -y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} $$
+Which gives eigenvector $\begin{pmatrix} 1 \\ 1 \end{pmatrix}$.
+
+Since $T^2 = I$, it is easy to show that 1 is an eigenvalue with eigenvector $\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\1 \end{pmatrix}$. 
+
+Consider particularly the vector $\begin{pmatrix} 1 \\ 0 \end{pmatrix}$, notice that $\begin{pmatrix} 1 \\ 0 \end{pmatrix} \in E_{\lambda^m}(T^m) = E_1(I)$ (with $m=2$). However, $E_\lambda(T) = E_1( \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}) = Span( \begin{pmatrix} 1 \\1 \end{pmatrix})$. Hence $\begin{pmatrix} 1 \\ 0 \end{pmatrix} \notin E_\lambda(T)$, so $E_\lambda(T) \ne E_{\lambda^m}(T^m)$.
+\bigskip
+
+\textbf{f)} Find $T: \mathcal{V} \to \mathcal{V}$ so 0 not an eigenvalue but $T$ not invertible.
+\smallskip 
+
+Consider $T: \mathbb{R}^\infty \to \mathbb{R}^\infty$, $T(x_1, x_2, \cdots)=(0,x_1, x_2 ,\cdots)$. 
+
+$T$ is not surjective since the outputs of $T$ always have its first entry to be zero, so, for example, $(1,1,1,\cdots) \notin \mathcal{R}(T)$. Since $T$ is not bijective it is not invertible.
+
+Assume 0 is an eigenvalue for $T$, then we can find nonzero $\vec{v} = (v_1,v_2, \cdots)$ such that $T(\vec{v}) = 0\vec{v} =\vec{0}$. However, 
+$$T(\vec{v}) = T(v_1,v_2, \cdots) = (0, v_1,v_2,\cdots) = \vec{0}$$
+implies that $v_i = 0$ for all $i$, hence $\vec{v} = \vec{0}$, contradicts that $\vec{v}$ is a nonzero vector. Thus 0 is not an eigenvalue of $T$.
+
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 2}
+\medskip
+
+\begin{itshape}
+Suppose $S,T\in \mathcal{L}(\mathcal{V})$ and $S$ is invertible. Prove that $T$ and $S^{-1}TS$ have the same eigenvalues. What is the relationship between the eigenvectors of $T$ and those of $S^{-1}TS$?
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Let $\lambda$ be an eigenvalue of $S^{-1}TS$ with eigenvector $\vec{v}$. Then we have
+\begin{align*}
+S^{-1}TS \vec{v} =& \lambda \vec{v} \\
+SS^{-1}TS \vec{v} =& S\lambda \vec{v} \\
+T(S \vec{v})=& \lambda (S\vec{v})
+\end{align*}
+This shows that $S\vec{v}$ is an eigenvector of $T$ with the same eigenvalue $\lambda$.
+\smallskip
+
+Now let $\lambda'$ be an eigenvalue of $T$ with eigenvector $\vec{v}'$. Then we have
+\begin{align*}
+T\vec{v}' =& \lambda' \vec{v}' \\
+S^{-1}T\vec{v}' =& S^{-1}\lambda' \vec{v}'\\
+S^{-1}T I \vec{v} =& \lambda' S^{-1} \vec{v}' \\
+S^{-1}T SS^{-1} \vec{v} =& \lambda' S^{-1} \vec{v}' \\
+S^{-1}T S(S^{-1} \vec{v}) =& \lambda' (S^{-1} \vec{v}')
+\end{align*}
+This shows $S^{-1}\vec{v}'$ is an eigenvector for $S^{-1}TS$ with the same eigenvalue $\lambda'$. 
+
+Hence, $\lambda$ is an eigenvalue of $T$ iff it is also an eigenvalue of $S^{-1}TS$. And the eigenvectors are related by $\vec{v}_{T} = S\vec{v}_{S^{-1}TS}$.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 3}
+\medskip
+
+\begin{itshape}
+Find all eigenvalues and eigenvectors of $T: \mathbb{C}^\infty \to \mathbb{C}^\infty$, $T(x_1, x_2, \cdots) = (x_2, x_3, \cdots)$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Suppose $T(x_1, x_2, \cdots) = \lambda (x_1, x_2, \cdots)$, that is $(x_1,x_2, \cdots)$ is an eigenvector with eigenvalue $\lambda$. Then
+$$
+T(x_1,x_2, \cdots) = (x_2, x_3, \cdots) = \lambda(x_1,x_2, \cdots)
+$$
+So we have the relation $x_{i+1} =\lambda x_i$. I claim that $x_n = \lambda^{n-1} x_1$ ($n >1$). Prove by induction.
+
+Base case: when $n=2$, then from the above relation we see that $x_2 = \lambda x_1$.
+
+Assume $x_n = \lambda ^{n-1}x_1$ holds for some $n$, then $x_{n+1} = \lambda x_n = \lambda \cdot \lambda ^{n-1}x_1 = \lambda^{(n+1)-1} x_1$. Hence the statement holds also for $n+1$. 
+\smallskip
+
+Since we know now that eigenvectors corresponding to eigenvalue $\lambda$ is in the form $(x_1, \lambda x_1, \lambda^2 x_1, \cdots) = x_1(1, \lambda, \lambda^2, \cdots)$, we can conclude that any $\lambda \in \mathcal{F} = \mathbb{C}$ could be an eigenvalue with corresponding eigenspace $E_\lambda = Span((1,\lambda, \lambda^2, \cdots))$.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 4}
+\medskip
+
+\begin{itshape}
+Suppose $\lambda_1,\lambda_2, \cdots , \lambda_n$ are distinct real numbers. Prove $e^{\lambda_{1}x},e^{\lambda_{2}x},\cdots , e^{\lambda_{n}x}$ are linear independent vectors in $\mathcal{C}^\infty$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Consider the linear transformation $T: \mathcal{C}^\infty \to \mathcal{C}^\infty$, $T(f) = f'$. Recall that in lecture, we have shown that every $\lambda \in \mathbb{R}$ is an eigenvalue for $T$ and $c e^{\lambda x}$ with $c \ne 0$ is the eigenfunction. We have also proved that if $\lambda_1, \lambda_2, \cdots, \lambda_n$ are distinct eigenvalues of some linear transformation $T$, then their corresponding eigenvector $\vec{v}_1, \vec{v}_2, \cdots, \vec{v}_n$ are linearly independent. Here, the eigenvectors we have are $e^{\lambda_{1}x},e^{\lambda_{2}x},\cdots , e^{\lambda_{n}x}$. So they must be linearly independent since their eigenvalues are distinct.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 5}
+\medskip
+
+\begin{itshape}
+Let $T \in \mathcal{L}(\mathcal{V})$, $ \lambda \in \mathcal{F}$, $n \ge1$. Show that $T(T-\lambda I)^n = (T-\lambda I )^n T$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Prove by induction. 
+
+Base case: $n=1$, then 
+\begin{align*}
+T(T-\lambda I) &= TT - T\lambda I \\
+&= TT- \lambda T \\
+&= TT- \lambda I T \\
+&= (T-\lambda I)T
+\end{align*}
+Induction step: Assume $T(T-\lambda I )^n = (T-\lambda I )^n T$, then
+\begin{align*}
+T(T-\lambda I )^{n+1} &= (T(T-\lambda I )^n )(T-\lambda I ) \\
+&= (T-\lambda I )^nT (T-\lambda I ) \\
+&= (T-\lambda I )^n (T-\lambda I ) T \text{ (used the base case)} \\
+&= (T-\lambda I )^{n+1}T
+\end{align*} 
+Hence $T(T-\lambda I)^n = (T-\lambda I )^n T$ is true for all $n$.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 6}
+\medskip
+
+\begin{itshape}
+Consider $T \in \mathcal{L}(\mathcal{V})$, $dim \; \mathcal{V} =n$, and a vector $\vec{v} \in \mathcal{V}$ such that $(T-\lambda I)^{p-1} \vec{v} \ne 0$, $(T-\lambda I)^p \vec{v} =0$. 
+
+Let $\vec{v}_j=(T-\lambda I)^j \vec{v} $ for $j =1, \cdots, p-1$, $\vec{v}_0=\vec{v}$. Show that the vectors $\vec{v}_{p-1}, \cdots , \vec{v}_1, \vec{v}_0$ are linearly independent.
+
+(Hint: start assuming $a_0 \vec{v}_0 + \cdots + a_{p-1} \vec{v}_{p-1} =0$ and apply $(T-\lambda I)^{p-1}$ to both sides of this equaiton)
+\medskip
+
+Show $Span(\vec{v}_0, \cdots, \vec{v}_{p-1})$ is $T$ invariant.
+
+(Hint: for any $\vec{w} \in \mathcal{V}$ we can write $T(\vec{w}) = (T-\lambda I)\vec{w} + \lambda \vec{w}$)
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+Let $a_0 \vec{v}_0 + \cdots + a_{p-1} \vec{v}_{p-1} =\vec{0}$, then 
+\begin{align*}
+a_0 \vec{v}_0 + a_1 \vec{v}_1+ \cdots + a_{p-1} \vec{v}_{p-1} &= \vec{0} \\
+a_0 \vec{v} + a_1 (T-\lambda I) \vec{v} + \cdots + a_{p-1} (T-\lambda I)^{p-1} \vec{v} &= \vec{0}
+\end{align*}
+Since $(T-\lambda I)^{p-1}$ is a linear transformation, it maps zero to zero. So applying $(T-\lambda I)^{p-1}$ on both sides, we have
+\begin{align*}
+0 &= (T-\lambda I)^{p-1}(a_0 \vec{v} + a_1 (T-\lambda I) \vec{v} + \cdots + a_{p-1} (T-\lambda I)^{p-1} \vec{v}) \\
+&= a_0 (T-\lambda I)^{p-1} \vec{v} + a_1(T-\lambda I)^{p-1} (T-\lambda I) \vec{v} + \cdots + a_{p-1} (T-\lambda I)^{p-1}(T-\lambda I)^{p-1} \vec{v}\\
+&= a_0 (T-\lambda I)^{p-1} \vec{v} + a_1(T-\lambda I)^{p} \vec{v} + \cdots + a_{p-1} (T-\lambda I)^{p-2}(T-\lambda I)^{p} \vec{v}\\
+&= a_0 (T-\lambda I)^{p-1} \vec{v} + a_1 \cdot \vec{0} + \cdots + a_{p-1} (T-\lambda I)^{p-2} \cdot \vec{0}\\
+&= a_0 (T-\lambda I)^{p-1} \vec{v}
+\end{align*}
+Since $(T-\lambda I)^{p-1}\vec{v} \ne 0 $, $a_0 = 0$. So, we now have $$a_1 (T-\lambda I) \vec{v} + \cdots + a_{p-1} (T-\lambda I)^{p-1} \vec{v} = \vec{0} $$. Using similar proceeder, multiplying both sides of this equation by $(T-\lambda I)^{p-2}$, we can show that $a_1 =0$. Then inductively, we can prove that $a_i = 0$ for all $i$. A more formal prove using induction will be as follow.
+
+Assuming $a_i = 0$ for all $i \le n$, then we have 
+$$a_{n+1}(T-\lambda I)^{n+1}\vec{v} + a_{n+2}(T-\lambda I)^{n+2}\vec{v} + \cdots + a_{p-1}(T-\lambda I)^{p-1} \vec{v}= 0$$
+Multiply both sides by $(T-\lambda I) ^{p-(n+2)}$ then 
+\begin{align*}
+(T-\lambda I) ^{p-(n+2)}(a_{n+1}(T-\lambda I)^{n+1}\vec{v} + a_{n+2}(T-\lambda I)^{n+2}\vec{v} + \cdots + a_{p-1}(T-\lambda I)^{p-1}\vec{v}) &= 0 \\
+a_{n+1}(T-\lambda I)^{p-1} \vec{v}+ a_{n+2}(T-\lambda I)^{p}\vec{v} + \cdots + a_{p-1}(T-\lambda I)^{p-(n+3)}(T-\lambda I)^{p}\vec{v} &=0 \\
+a_{n+1}(T-\lambda I)^{p-1} \vec{v}+ a_{n+2}\cdot \vec{0} + \cdots + a_{p-1}(T-\lambda I)^{p-(n+3)}\cdot \vec{0}&=0 \\
+a_{n+1}(T-\lambda I)^{p-1} \vec{v} &= 0
+\end{align*}
+Since $(T-\lambda I)^{p-1} \ne 0$, $a_{n+1}=0$. This shows that all $a_i$ are zero so $\vec{v}_0, \cdots, \vec{v}_{p-1}$ are independent. 
+\bigskip
+
+Now we will show that $Span(\vec{v}_0, \cdots, \vec{v}_{p-1})$ is $T$ invariant.
+
+Let $\vec{w} \in Span(\vec{v}_0, \cdots, \vec{v}_{p-1})$, then we can write $\vec{w} = a_0\vec{v}_0 + \cdots + a_{p-1}\vec{v}_{p-1}$.
+\begin{align*}
+T\vec{w} &= T\vec{w} -\lambda \vec{w} + \lambda\vec{w} \\
+&= (T-\lambda I) \vec{w} +\lambda \vec{w} \\
+&= (T- \lambda I)(a_0\vec{v}_0 + a_1 \vec{v}_1+ \cdots +a_{p-1}\vec{v}_{p-1}) + \lambda \vec{w} \\
+&= (T-\lambda I)[a_0 \vec{v} + a_1(T-\lambda I)\vec{v} + \cdots + a_{p-1}(T-\lambda I)^{p-1}\vec{v}] +\lambda \vec{w} \\
+&= [a_0 (T-\lambda I)\vec{v} + a_1(T-\lambda I)^2\vec{v} + \cdots+ a_{p-2}(T-\lambda I)^{p-1} \vec{v} + a_{p-1}(T-\lambda I)^{p}\vec{v}] + \lambda \vec{w} \\
+&= [a_0\vec{v}_1 + a_1 \vec{v}_2+ \cdots a_{p-2}\vec{v}_{p-1} + a_{p-1}(T-\lambda I)^p\vec{v}] + \lambda \vec{w} \\
+&=  [a_0\vec{v}_1 + a_1 \vec{v}_2+ \cdots a_{p-2}\vec{v}_{p-1} + \vec{0}] + \lambda \vec{w} \\
+&=  [a_0\vec{v}_1 + a_1 \vec{v}_2+ \cdots a_{p-2}\vec{v}_{p-1} ] + \lambda \vec{w}
+\end{align*} 
+Clearly, the square bracket is a vector in the span of $\{ \vec{v}_0, \cdots, \vec{v}_{p-1} \}$, and so is $\lambda \vec{w}$. So $T\vec{w}$ is the sum of vectors in $Span(\vec{v}_0, \cdots, \vec{v}_{p-1})$, hence itself if also in $Span(\vec{v}_0, \cdots, \vec{v}_{p-1})$. This shows that $Span(\vec{v}_0, \cdots, \vec{v}_{p-1})$ is $T$ invariant.
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 7}
+\medskip
+
+\begin{itshape}
+Prove that if $P \in \mathcal{L}(\mathcal{V})$ and $P^2=P$, then $\mathcal{V} = \mathcal{N}(P) + \mathcal{R}(P)$. In general, it the sum direct?
+\end{itshape}
+\medskip
+
+\begin{proof}
+$ $\newline
+It is clear that $\mathcal{N}(P) + \mathcal{R}(P) \subseteq \mathcal{V}$ since $\mathcal{N}(P) + \mathcal{R}(P)$ is just a set of vectors written as a sum of vectors in $\mathcal{V}$ (namely one from the null space one from the range), where each of which is still a vector in $\mathcal{V}$. 
+
+Now show that $\mathcal{V} \subseteq \mathcal{N}(P) + \mathcal{R}(P)$. Let $\vec{v} \in \mathcal{V}$, then $P(\vec{v}) \in \mathcal{R}(P)$. Let $\vec{w}= P(\vec{v}) - v$, notice that $\vec{w} \in \mathcal{N}(P)$ since $$P(\vec{w}) = P( P(\vec{v}) - \vec{v}) = P^2(\vec{v}) - P(\vec{v}) = P(\vec{v}) - P(\vec{v}) = \vec{0}$$ So we have 
+\begin{align*}
+\vec{w} &= P(\vec{v}) - \vec{v} \\
+\vec{v} &= P(\vec{v}) - \vec{w}
+\end{align*}
+This shows $\vec{v}$ can be written as a sum of vectors from $\mathcal{R}(P)$ and $\mathcal{N}(P)$, hence $\vec{v} \in \mathcal{R}(P) + \mathcal{N}(P)$ and $\mathcal{V} \subseteq \mathcal{N}(P) + \mathcal{R}(P)$. 
+
+Thus, $\mathcal{V} = \mathcal{N}(P) + \mathcal{R}(P)$.
+\bigskip
+
+I claim that the sum is direct. First of all, it must be true that $\vec{0} \in \mathcal{R}(P) \cap \mathcal{N}(P)$ since $\mathcal{R}(P)$ and $\mathcal{N}(P)$ are subspaces of $\mathcal{V}$ hence must contain $\vec{0}$.
+
+Now let $\vec{v} \in \mathcal{R}(P)$ (with $\vec{v} \ne \vec{0}$), then we can write $\vec{v} = P(\vec{w})$ for some $\vec{w} \in \mathcal{V}$.
+Note that $\vec{v} \notin \mathcal{N}(P)$ since $$P(\vec{v}) = P(P(\vec{w})) = P^2(\vec{w}) = P(\vec{w}) = \vec{v} \ne \vec{0}$$ Hence, $\vec{v} \ne \mathcal{R}(P) \cap \mathcal{N}(P)$ and $\mathcal{R}(P) \cap \mathcal{N}(P) = \{ \vec{0} \}$. This shows that the sum is direct.
+\end{proof}
+
+
+\end{document}
