@@ -1,0 +1,336 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{WINTER 2021 --- MATH 340 Final}
+\rhead{Helen (Yeu) Chen}
+\setlength{\parindent}{0cm}
+\usepackage{makecell}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{systeme}
+\usepackage{centernot}
+
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+$ \bullet$ \textbf{Problem 1}
+\medskip
+
+\begin{itshape}
+Let $M_{3 \times 3}(\mathbb{R})$ be the vector space of $3 \times 3$ real matrices and let $$\mathcal{U} = \{ M \in M_{3 \times 3}(\mathbb{R}) \; | \; \text{the sum of the diagonal elements of $M$ is 0} \} $$
+
+(a) Show that $\mathcal{U}$ is a subspace of $M_{3 \times 3}(\mathbb{R})$.
+\medskip
+
+(b) Find a basis for $\mathcal{U}$. You need to justify (or it must be clear from your work) that your list of vectors is indeed a basis for $\mathcal{U}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+(a) Show $\mathcal{U}$ is a subspace. Let $A, B \in \mathcal{U}$ and $\lambda \in F = \mathbb{R}$.
+\smallskip
+
+1) $\vec{0} \in \mathcal{U}$: $\vec{0} = \begin{pmatrix} 0&0&0\\0&0&0\\0&0&0 \end{pmatrix} \in \mathcal{U}$, since it clearly has its diagonal add up to zero.
+\smallskip
+
+2) Close under addition: 
+$$
+A+B = \begin{pmatrix} a_{11}&a_{12}&a_{13} \\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{pmatrix} +\begin{pmatrix} b_{11}&b_{12}&b_{13} \\b_{21}&b_{22}&b_{23}\\b_{31}&b_{32}&b_{33}\end{pmatrix} 
+$$
+The diagonal term of this matrix sum is $(a_{11} + b_{11}), (a_{22} + b_{22}), (a_{33} + b_{33})$.
+
+Since $A, B \in \mathcal{U}$, $a_{11}+a_{22}+a_{33} = b_{11}+b_{22}+b_{33}=0$. Hence the sum of diagonal terms of $A+B$ is 
+\begin{align*}
+&(a_{11} + b_{11})+ (a_{22} + b_{22})+ (a_{33} + b_{33}) \\
+=& (a_{11}+a_{22}+a_{33}) + (b_{11}+b_{22}+b_{33}) \\
+=& 0 + 0 \\
+=& 0
+\end{align*}
+Thus $A+B \in \mathcal{U}$.
+\smallskip
+
+3) Close under scalar multiplication:
+$$ \lambda A = \lambda  \begin{pmatrix} a_{11}&a_{12}&a_{13} \\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{pmatrix}$$
+So the diagonal terms of $\lambda A$ are: $\lambda a_{11}, \lambda a_{22}, \lambda a_{33}$. 
+Taking the sum we have 
+\begin{align*}
+& \lambda a_{11}+ \lambda a_{22}+ \lambda a_{33} \\
+=& \lambda (a_{11}+a_{22}+a_{33}) \\
+=& \lambda \cdot 0 \\
+=& 0
+\end{align*}
+Hence $\lambda A \in \mathcal{U}$.
+
+The above shows $\mathcal{U}$ is a subspace of $M_{3 \times 3}(\mathbb{R})$.
+
+\bigskip
+
+(b) Find a basis for $\mathcal{U}$.
+
+I claim that the following is a basis for $\mathcal{U}$:
+\begin{align*}
+\mathcal{B} = \{ &\begin{pmatrix} 1&0&0\\0&0&0\\0&0&-1 \end{pmatrix}, \begin{pmatrix} 0&0&0\\0&1&0\\0&0&-1 \end{pmatrix}, \begin{pmatrix} 0&1&0\\0&0&0\\0&0&0 \end{pmatrix}, \begin{pmatrix} 0&0&1\\0&0&0\\0&0&0 \end{pmatrix}, \\
+&\begin{pmatrix} 0&0&0\\1&0&0\\0&0&0 \end{pmatrix}, \begin{pmatrix} 0&0&0\\0&0&1\\0&0&0 \end{pmatrix}, \begin{pmatrix} 0&0&0\\0&0&0\\1&0&0 \end{pmatrix}, \begin{pmatrix} 0&0&0\\0&0&0\\0&1&0 \end{pmatrix} \}
+\end{align*}
+Let $A= \begin{pmatrix} a_{11}&a_{12}&a_{13} \\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{pmatrix}  \in \mathcal{U}$, then $a_{11}+a_{22}+a_{33} = 0 \Rightarrow a_{33} = -(a_{11}+a_{22})$
+
+We can write $A$ as 
+\begin{align*}
+A =& \begin{pmatrix} a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{pmatrix} \\
+=&\begin{pmatrix} a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&-(a_{11}+a_{22})\end{pmatrix} \\
+=& a_{11}\begin{pmatrix} 1&0&0\\0&0&0\\0&0&-1 \end{pmatrix} + a_{22} \begin{pmatrix} 0&0&0\\0&1&0\\0&0&-1 \end{pmatrix}+  a_{12}\begin{pmatrix} 0&1&0\\0&0&0\\0&0&0 \end{pmatrix}+a_{13} \begin{pmatrix} 0&0&1\\0&0&0\\0&0&0 \end{pmatrix}+ \\
+&a_{21}\begin{pmatrix} 0&0&0\\1&0&0\\0&0&0 \end{pmatrix}+a_{23} \begin{pmatrix} 0&0&0\\0&0&1\\0&0&0 \end{pmatrix}+a_{31} \begin{pmatrix} 0&0&0\\0&0&0\\1&0&0 \end{pmatrix}+a_{32} \begin{pmatrix} 0&0&0\\0&0&0\\0&1&0 \end{pmatrix}
+\end{align*}
+This shows that $A \in span(\mathcal{B})$ and $\mathcal{U} \subseteq span(\mathcal{B})$.
+\smallskip
+
+Now let $A \in span(\mathcal{B})$. Then
+\begin{align*}
+A &= \lambda_1 \begin{pmatrix} 1&0&0\\0&0&0\\0&0&-1 \end{pmatrix}+\lambda_2 \begin{pmatrix} 0&0&0\\0&1&0\\0&0&-1 \end{pmatrix}+\lambda_3 \begin{pmatrix} 0&1&0\\0&0&0\\0&0&0 \end{pmatrix}+\lambda_4\begin{pmatrix} 0&0&1\\0&0&0\\0&0&0 \end{pmatrix}+ \\
+&\lambda_5 \begin{pmatrix} 0&0&0\\1&0&0\\0&0&0 \end{pmatrix}+\lambda_6\begin{pmatrix} 0&0&0\\0&0&1\\0&0&0 \end{pmatrix}+\lambda_7 \begin{pmatrix} 0&0&0\\0&0&0\\1&0&0 \end{pmatrix}+\lambda_8 \begin{pmatrix} 0&0&0\\0&0&0\\0&1&0 \end{pmatrix} \\
+&= \begin{pmatrix} \lambda_1&\lambda_3&\lambda_4 \\ \lambda_5&\lambda_2&\lambda_6 \\ \lambda_7&\lambda_8&-\lambda_1 -\lambda_2 \end{pmatrix}
+\end{align*}
+Which has a sum of the diagonal terms $\lambda_1+\lambda_2+ (-\lambda_1-\lambda_2) = 0$. Hence $A \in \mathcal{U}$ and $ span(\mathcal{B}) \subseteq \mathcal{U}$.
+
+The above shows that $span(\mathcal{B}) = \mathcal{U}$
+\medskip
+
+Now shows $\mathcal{B}$ is linearly independent.
+
+Let 
+\begin{align*}
+\begin{pmatrix}0&0&0\\0&0&0\\0&0&0 \end{pmatrix}  = &\lambda_1 \begin{pmatrix} 1&0&0\\0&0&0\\0&0&-1 \end{pmatrix}+\lambda_2 \begin{pmatrix} 0&0&0\\0&1&0\\0&0&-1 \end{pmatrix}+\lambda_3 \begin{pmatrix} 0&1&0\\0&0&0\\0&0&0 \end{pmatrix}+\lambda_4\begin{pmatrix} 0&0&1\\0&0&0\\0&0&0 \end{pmatrix}+ \\
+&\lambda_5 \begin{pmatrix} 0&0&0\\1&0&0\\0&0&0 \end{pmatrix}+\lambda_6\begin{pmatrix} 0&0&0\\0&0&1\\0&0&0 \end{pmatrix}+\lambda_7 \begin{pmatrix} 0&0&0\\0&0&0\\1&0&0 \end{pmatrix}+\lambda_8 \begin{pmatrix} 0&0&0\\0&0&0\\0&1&0 \end{pmatrix} \\
+&= \begin{pmatrix} \lambda_1&\lambda_3&\lambda_4 \\ \lambda_5&\lambda_2&\lambda_6 \\ \lambda_7&\lambda_8&-\lambda_1 -\lambda_2 \end{pmatrix}
+\end{align*}
+\end{proof}
+Then is it clear from this equation that $$\lambda_1 = \lambda_2=\lambda_3 =\lambda_4=\lambda_5=\lambda_6=\lambda_7=\lambda_8 =0$$Hence $\mathcal{B}$ is linearly independent and is indeed a basis for $\mathcal{U}$.
+
+\newpage
+$ \bullet$ \textbf{Problem 2}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{V}$ be a vector space (not necessarily finite dimensional) and let $\mathcal{S}$ be a subset of $\mathcal{V}$ (not necessarily finite). Given a linear transformation $T: \mathcal{V} \to \mathcal{V}$, define the image of $\mathcal{S}$ under $T$ to be the set
+$$T(\mathcal{S}) = \{ \vec{w} \in \mathcal{V} \; | \; \exists \vec{v} \in \mathcal{S}, \vec{w} = T(\vec{v}) \}$$
+
+(a) Prove that if $T(\mathcal{S})$ is linearly independent, then $\mathcal{S}$ is linearly independent.
+\medskip
+
+(b) Is it true that if $\mathcal{S}$ is linearly independent than $T(\mathcal{S})$ must be linearly independent? Justify your answer.
+\end{itshape}
+\medskip
+
+\begin{proof}
+(a) Show $T(\mathcal{S})$ independent $\implies$ $\mathcal{S}$ independent
+
+Let $\vec{s}_1, \cdots, \vec{s}_n$ be any finite list of vectors in $\mathcal{S}$, and assume $$\lambda_1 \vec{s}_1 + \cdots + \lambda_n \vec{s}_n =0$$
+Apply $T$ on both sides, we get
+ $$\lambda_1 T(\vec{s}_1) + \cdots + \lambda_n T(\vec{s}_n) = T(0) = 0$$
+ (note we have used the fact that linear transformation maps zero to zero)
+ 
+ Since $T(\vec{s}_i )\in T(\mathcal{S})$ for all $\vec{s}_i$ in the vector list, and $T(\mathcal{S})$ is linearly independent by assumption, we have $\lambda_1 = \cdots = \lambda_n = 0$. This shows that $\mathcal{S}$ is linearly independent. 
+ \bigskip
+ 
+ (b) I claim that $\mathcal{S}$ independent $\centernot\implies$ $T(\mathcal{S})$ independent.
+ 
+ Consider the case when $\mathcal{S}$ is independent but there exist $\vec{s} \in \mathcal{S}$ such that $T(\vec{s}) = \vec{0}$. Then $\vec{0} \in T(\mathcal{S})$ so $T (\mathcal{S})$ is not independent. (any set containing 0 is linearly dependent)
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 3}
+\medskip
+
+\begin{itshape}
+Suppose $\mathcal{V}$ is a vector space over $F$ and $T: \mathcal{V} \to F$ is a linear transformation. Suppose $\vec{v} \in \mathcal{V}$ and $T(\vec{v}) \ne 0$. Prove that 
+$$\mathcal{V} = \mathcal{N}(T) \oplus span(\vec{v})$$ 
+Recall: $span(\vec{v}) = \{ k\vec{v} \; | \; k \in F\}$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+
+ First show $ \mathcal{N}(T) +  span(\vec{v}) $ is a direct sum.
+ \smallskip
+ 
+ Let $\vec{u} \in  \mathcal{N}(T) \cap  span(\vec{v})$, then $\vec{u} \in span(\vec{v})$ implies $\vec{u} = k \vec{v}$ where $k$ is a scalar. Since $\vec{u} \in \mathcal{N}(T)$, $T(\vec{u}) = T(k \vec{v}) =kT(\vec{v})= 0$. Because, $T(\vec{v}) \ne 0$, this implies $k = 0$. Hence $\vec{u} = 0$ and the sum is direct.
+\bigskip
+ 
+ 
+Now show that $\mathcal{V} = \mathcal{N}(T) \oplus  span(\vec{v})$.
+\smallskip
+
+Clearly $\mathcal{N}(T) \oplus  span(\vec{v}) \subseteq \mathcal{V}$ since $\mathcal{N}(T)$ and $span(\vec{v})$ individually are subsets of $\mathcal{V}$, and sum of vectors in $\mathcal{V}$ must be also in $\mathcal{V}$.
+\smallskip
+
+Since $T$ is not a zero map (because $T(\vec{v}) \ne 0$), the range of $T$ must have dimension greater than or equal to 1. However, because $\mathcal{R}(T) \le F$ and $F$ has dimension 1, we concluded that range of $T$ must also have dimension 1.
+
+By dimension theorem, we then know that the dimension of $\mathcal{V}$ is greater than the dimension of $\mathcal{N}(T)$ by 1. Since
+\begin{align*}
+dim (\mathcal{N}(T) \oplus span(\vec{v})) &= dim(\mathcal{N}(T)) + dim(span(\vec{v}))\\
+& =dim(\mathcal{N}(T)) +1
+\end{align*}
+ It has the same dimension as $\mathcal{V}$. So $\mathcal{N}(T) \oplus span(\vec{v})$ is a subspace (recall the sum of subspaces is a subspace) of $\mathcal{V}$ with the same dimension as $\mathcal{V}$. Hence, $\mathcal{N}(T) \oplus span(\vec{v}) = \mathcal{V}$.
+
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 4}
+\medskip
+
+\begin{itshape}
+Suppose $T: \mathbb{R}^3 \to \mathbb{R}^3$ is a linear transformation. Suppose $\vec{v}_1, \vec{v}_2, \vec{v}_3$ are nonzero vectors in $\mathbb{R}^3$ such that:
+$$(T-2I)\vec{v}_1 = 0, \; (T-2I)\vec{v}_2 = \vec{v}_1, \; (T-2I)\vec{v}_3 = \vec{v}_2$$
+Prove:
+
+(a) $\lambda =2$ is the only eigenvalue for $T$.
+\medskip
+
+(b) $T$ is not diagonalizable.
+\medskip
+
+(c) Find a basis $\mathcal{B}$ for $\mathbb{R}^3$ such that $T^\mathcal{B}_{\mathcal{B}} = \begin{pmatrix} 2 &1 & 0 \\0&2&1 \\0&0&2 \end{pmatrix}$
+\end{itshape}
+\medskip
+
+\begin{proof}
+(a) Show $\lambda =2$ is the only eigenvalue of $T$.
+\smallskip
+
+We will first show that $\vec{v}_1, \vec{v}_2, \vec{v}_3$ are linearly independent.
+
+Let $k_1 \vec{v}_1 + k_2 \vec{v}_2 + k_3 \vec{v}_3 = 0$, applying $(T-2I)$ on both sides repeatedly and use the fact that $(T-2I)(0) = 0$ (since it is a linear transformation), we have
+\begin{align*}
+k_1 \vec{v}_1 + k_2 \vec{v}_2 + k_3 \vec{v}_3 &= 0  \text{\quad (1) }\\
+(T-2I)[k_1 \vec{v}_1 + k_2 \vec{v}_2 + k_3 \vec{v}_3] &= 0 \\
+k_1 \cdot 0 + k_2 \vec{v}_1 + k_3 \vec{v}_2 &= 0 \\
+ k_2 \vec{v}_1 + k_3 \vec{v}_2 &= 0 \text{\quad (2) }\\
+(T-2I)[ k_2 \vec{v}_1 + k_3 \vec{v}_2] &= 0 \\
+k_3\vec{v}_1 &= 0
+\end{align*}
+Since $\vec{v}_1 \ne 0$, it must be true that $k_3 = 0$. Plug this $k_3$ value back to eq.(2), we find $k_2=0$. Similarly, plug these $k_2,k_3$ back to eq.(1), we get $k_1=0$. Hence, $\vec{v}_1, \vec{v}_2, \vec{v}_3$ are linearly independent. Since $span(\vec{v}_1, \vec{v}_2, \vec{v}_3)$ has dimension 3 and it is a subspace of $\mathbb{R}^3$, $span(\vec{v}_1, \vec{v}_2, \vec{v}_3) = \mathbb{R}^3$ and $\vec{v}_1, \vec{v}_2, \vec{v}_3$ is a basis of $\mathbb{R}^3$.
+\medskip
+
+Now assume $\lambda$ is an eigenvalue of $T$ with eigenvector $\vec{v} \in \mathbb{R}^3$. We can write $\vec{v}$ as a linear combination of the $\vec{v}_i$'s. Then we have
+\begin{align*}
+T(\vec{v}) =& \lambda \vec{v} \\
+T(a_1 \vec{v}_1+ a_2 \vec{v}_2 + a_3 \vec{v}_3) =& \lambda (a_1 \vec{v}_1+ a_2 \vec{v}_2 + a_3 \vec{v}_3)\\
+a_1( 2\vec{v}_1  )+ a_2(\vec{v}_1 +2\vec{v}_2) +a_3(\vec{v}_2+2\vec{v}_3) =& \lambda (a_1 \vec{v}_1+ a_2 \vec{v}_2 + a_3 \vec{v}_3)\\
+(2a_1+a_2-\lambda a_1) \vec{v}_1 + (2a_2+a_3 -\lambda a_2)\vec{v}_2 +(2a_3-\lambda a_3)\vec{v}_3 =& 0 
+\end{align*}
+Since $\vec{v}_1, \vec{v}_2,\vec{v}_3$ are independent, their coefficients in the sum must be zero. We start from the end (coefficient of $\vec{v}_3$), if $a_3 \ne 0$ then we can deduce that $\lambda =2$ and we are done. If $a_3 =0$ then we look at the second coefficient. Again if $a_2 \ne 0$ we get $\lambda =2 $, if $a_2 = 0$, look at the first coefficient. In this case $a_1$ can no longer be zero (since $\vec{v} \ne 0$ because it is an eigenvector), so we must get $\lambda =2 $. Hence, in all cases, $\lambda =2 $, this shows that 2 is the only eigenvalue.
+\bigskip
+
+(b) Show $T$ is not diagonalizable.
+\smallskip
+
+First, I claim that eigenvector of $T$ corresponds to the eigenvalue 2 must be a scalar multiple of $\vec{v}_1$. 
+
+Let $\vec{v}$ be and eigenvector of $T$ with eigenvalue 2, then we write $\vec{v} = b_1 \vec{v}_1 + b_2 \vec{v}_2 + b_3 \vec{v}_3$ and 
+\begin{align*}
+(T-2I) \vec{v} &= 0 \\
+(T-2I) (b_1 \vec{v}_1 + b_2 \vec{v}_2 + b_3 \vec{v}_3) &= 0 \\
+b_2 \vec{v}_1 + b_3 \vec{v}_2 &= 0
+\end{align*}
+Since $\vec{v}_1, \vec{v}_2$ are independent, $b_2 = b_3 =0$. Hence, $\vec{v}= b_1 \vec{v}_1$ where $b_1$ is any non zero constant. This shows that $E_2$ has dimension 1.
+
+Recall that if $\lambda_1, \cdots, \lambda_m$ are the distinct eigenvalue of T (with $\mathcal{V}$ finite), then $T$ is diagonalizable iff $dim( \mathcal{V}) = dim(E_{\lambda_1})+ \cdots + dim(E_{\lambda_m})$ (in our case there is only one eigenspace in the sum). Here, we have
+$$
+3 = dim(\mathbb{R}^3) \ne dim(E_2) = 1
+$$
+Hence, $T$ is not diagonalizable.
+\bigskip
+
+(c) Find a basis $\mathcal{B}$ for $\mathbb{R}^3$ such that $T^\mathcal{B}_{\mathcal{B}} = \begin{pmatrix} 2 &1 & 0 \\0&2&1 \\0&0&2 \end{pmatrix}$
+
+I claim that the vectors $\mathcal{B} = \{ \vec{v}_1, \vec{v}_2, \vec{v}_3 \}$ could be such a basis.
+
+As shown in part a), $\mathcal{B}$ is indeed a basis for $\mathbb{R}^3$. So what remains to show is that it satisfy $T^\mathcal{B}_{\mathcal{B}}$.
+
+Since $(T-2I)\vec{v}_1 = 0$, we have $T(\vec{v}_1) = 2\vec{v}_1$, just as the first column indicated. 
+
+With $(T-2I)\vec{v}_2 = \vec{v}_1$, we have $T(\vec{v}_2) = \vec{v}_1 + 2\vec{v}_2$, like the second column said.
+
+With $(T-2I)\vec{v}_3 = \vec{v}_2$, we have $T(\vec{v}_3) = \vec{v}_2 + 2\vec{v}_3$, conformed with the third column. 
+\end{proof}
+
+\newpage
+$ \bullet$ \textbf{Problem 5}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{V}$ be a finite dimensional inner product space, and let $\mathcal{U}, \mathcal{W}$ be subspaces of $\mathcal{V}$. Prove that: 
+$$(\mathcal{U}+\mathcal{W})^\perp = \mathcal{U}^\perp \cap \mathcal{W}^\perp$$.
+
+
+\end{itshape}
+\medskip
+
+\begin{proof}
+Let $\vec{v} \in \mathcal{U}^\perp \cap \mathcal{W}^\perp$, then
+\begin{align*}
+\vec{v} \in \mathcal{U}^\perp \cap \mathcal{W}^\perp & \implies \vec{v} \in \mathcal{U}^\perp \text{ and } \vec{v} \in \mathcal{W}^\perp \\
+& \implies \langle \vec{v} , \vec{u} \rangle =0 \;  \forall \; \vec{u} \in \mathcal{U} \text{ and } \langle \vec{v} , \vec{w} \rangle =0\;  \forall \; \vec{w} \in \mathcal{W} \\
+& \implies \langle \vec{v}, \vec{u} \rangle + \langle \vec{v}, \vec{w} \rangle = 0 \; \forall \; \vec{u} \in \mathcal{U} \text{ and } \vec{w} \in \mathcal{W} \\
+& \implies \langle \vec{v} , \vec{u} + \vec{w} \rangle =0  \; \forall \; \vec{u} \in \mathcal{U} \text{ and } \vec{w} \in \mathcal{W}\\
+&  \implies \langle \vec{v} , \vec{u} + \vec{w} \rangle =0  \; \forall \; \vec{u} + \vec{w} \in \mathcal{U} + \mathcal{W} \\
+& \implies \vec{v} \in (\mathcal{U} + \mathcal{W} )^\perp
+\end{align*}
+Hence, $\mathcal{U}^\perp \cap \mathcal{W} ^\perp \subseteq (\mathcal{U} + \mathcal{W} )^\perp$.
+\medskip
+
+Let $\vec{v} \in (\mathcal{U} + \mathcal{W} )^\perp$, then
+\begin{align*}
+\vec{v} \in (\mathcal{U} + \mathcal{W} )^\perp & \implies \langle \vec{v}, \vec{u} + \vec{w} \rangle = 0 \; \forall \;  \vec{u} + \vec{w} \in \mathcal{U} + \mathcal{W} \\
+& \implies \langle \vec{v}, \vec{u} \rangle + \langle \vec{v}, \vec{w} \rangle = 0 \; \forall \; \vec{u} \in \mathcal{U} \text{ and } \vec{w} \in \mathcal{W} \\
+& \implies \langle \vec{v}, \vec{u} \rangle = - \langle \vec{v}, \vec{w} \rangle  \; \forall \; \vec{u} \in \mathcal{U} \text{ and } \vec{w} \in \mathcal{W}
+\end{align*}
+We can see $\langle \vec{v}, \vec{u} \rangle$ and $\langle \vec{v}, \vec{w} \rangle$ as functions of $\vec{u}$ and $\vec{w}$. If we fix a $\vec{w}$, this shows that $\langle \vec{v}, \vec{u} \rangle$ is a constant function. Similarly,  $\langle \vec{v}, \vec{w} \rangle$ is also a constant function. Since $\mathcal{U}$ is a subspace, $0\in \mathcal{U}$. Take $\vec{u} = 0$ then  $\langle \vec{v}, \vec{u} \rangle =\langle \vec{v}, 0 \rangle = 0$. So it is not just a constant function, it is namely a zero function. Similarly for $\langle \vec{v}, \vec{w} \rangle$. Hence 
+$$ \langle \vec{v}, \vec{u} \rangle = \langle \vec{v}, \vec{w} \rangle = 0 \; \forall \; \vec{u} \in \mathcal{U} \text{ and } \vec{w} \in \mathcal{W}$$ 
+That is, $\vec{v} \in \mathcal{U}^\perp \text{ and } \mathcal{W}^\perp \implies \vec{v} \in \mathcal{U}^\perp \cap \mathcal{W}^\perp$. Thus, $(\mathcal{U}+ \mathcal{W})^\perp \subseteq \mathcal{U}^\perp \cap \mathcal{W}^\perp$.
+
+This shows $(\mathcal{U}+\mathcal{W})^\perp = \mathcal{U}^\perp \cap \mathcal{W}^\perp$.
+\end{proof} 
+
+\newpage
+$ \bullet$ \textbf{Problem 6}
+\medskip
+
+\begin{itshape}
+Let $\mathcal{U} = span((1,1,0), (1,1,1))$. Find a vector $\vec{u} \in \mathcal{U}$ such that $|| \vec{u} - (1,0,0)|| $ is as small as possible. Here $|| \; ||$ is the usual norm in $\mathbb{R}^3$.
+\end{itshape}
+\medskip
+
+\begin{proof}
+$|| \vec{u} - (1,0,0)|| $ is minimized when $\vec{u}$ is the orthogonal projection of $(1,0,0)$ onto the plane $\mathcal{U}$. 
+
+We first find an orthonormal basis for $\mathcal{U}$. 
+
+Take $$\vec{b}_1 = \frac{(1,1,0)}{||(1,1,0)||} = (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0) $$ then calculate 
+\begin{align*}
+\vec{b}_2 &= (1,1,1) - \langle (1,1,1) , \vec{b}_1 \rangle \vec{b}_1\\
+&= (1,1,1) -  \langle (1,1,1) , (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0) \rangle (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0) \\
+&= (1,1,1) - \sqrt{2}(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0) \\
+&= (1,1,1) - (1,1,0) \\
+&= (0,0,1)
+\end{align*}
+(in our case, no need to normalize here). Thus an orthonormal basis for $\mathcal{U}$ is $(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0) , (0,0,1)$.
+
+The orthogonal projection is then given by 
+\begin{align*} 
+\vec{u} =&\langle (1,0,0), (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0)  \rangle (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0)  + \langle (1,0,0), (0,0,1) \rangle (0,0,1) \\
+= &\frac{1}{\sqrt{2}} (\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0)  + 0 \cdot (0,0,1) \\
+=& (\frac{1}{2},\frac{1}{2},0)
+\end{align*}
+\end{proof}
+
+
+
+\end{document}
